@@ -1,0 +1,22 @@
+Sign Up
+
+<%= form_for @artist do |f| %>
+  <div>
+    <%= f.text_field :username, placeholder: "Pick a username" %>
+  </div>
+  <div>
+    <%= f.text_field :location, placeholder: "Location" %>
+  </div>
+  <div>
+    <%= f.text_field :email, placeholder: "Email" %>
+  </div>
+  <div>
+    <%= f.text_field :password, placeholder: "Password" %>
+  </div>
+  <div>
+  <%= f.submit "Sign Up" %>
+<% end %>
+
+<script>
+  console.log("I'm Here.");
+</script>
