@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "artists#index"
+  root to: "artists#home"
 
   get '/artists', to: 'artists#index'
 
@@ -18,5 +18,11 @@ Rails.application.routes.draw do
   get '/artists/:id/edit', to: 'artists#edit', as: "edit_profile"
 
   patch 'artists/:id', to: 'artists#update'
+
+  get '/admin', to: 'artists#admin', as: "admin"
+
+  get '/home', to: 'artists#home', as: "homepage"
+
+  get '/drawing', to: 'drawing#new', as: "new_drawing"
 
 end

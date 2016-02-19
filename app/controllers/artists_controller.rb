@@ -39,6 +39,19 @@ class ArtistsController < ApplicationController
     redirect_to artist_path
   end
 
+  def admin
+    if !admin?
+      flash[:notice] = "Access denied."
+      redirect_to artists_path
+    else
+      render :admin
+    end
+  end
+
+  def home
+    render :home
+  end
+
   private
 
   def artist_params

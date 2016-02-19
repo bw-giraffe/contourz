@@ -9,9 +9,15 @@
 <body>
 <ul>
 	<% if current_artist%>
+		<li><%= link_to "Home", homepage_path %>
+		</li>
+		<li><%= link_to "Draw", new_drawing_path %>
+		</li>
 		<li><%= link_to "Profile", artist_path(current_artist)%></li>
 		<li><%= link_to "Log Out", logout_path %></li>
 	<% else %>
+		<li><%= link_to "Home", homepage_path %>
+		</li>
 		<li><%= link_to "Create Account", new_artist_path %></li>
 		<li><%= link_to "Log In", login_path %></li>
 	<% end %>

@@ -18,8 +18,5 @@ $( document ).ready(function () {
 	console.log("Sanity check working!");
 	  console.log("sanity check");
 
-	$('#updatePass').on("click", function (e){
-		console.log("Clicked this");
-	});
 });
 

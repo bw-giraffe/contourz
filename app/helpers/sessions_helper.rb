@@ -23,8 +23,13 @@ module SessionsHelper
     current_artist.id == artist.to_i
   end
 
-  def password_match?
-    
+  def admin?
+
+    if(current_artist.id.to_s == ENV['ADMIN_ID'])
+      return true
+    else
+      return false
+    end
   end
 
 end
