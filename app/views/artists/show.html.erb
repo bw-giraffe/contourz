@@ -1,13 +1,18 @@
-<h1>
-	<%= @artist.username %>
-</h1>
-<h2>
-	joined:
-	<%= @artist.created_at %>
-</h2>
-<h3>
-	location:
-	<%= @artist.location %>
-</h3>
+<div id = "basicInfo">
+	<h1>
+		<%= @artist.username %>
+	</h1>
+	<h2>
+		joined:
+		<%= @artist.created_at %>
+	</h2>
+	<h3>
+		location:
+		<%= @artist.location %>
+	</h3>
+</div>
+<div id = "options">
+	<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
+</div>
 
 

@@ -15,4 +15,8 @@ Rails.application.routes.draw do
 
   get '/sessions', to: 'sessions#destroy', as: "logout"
 
+  get '/artists/:id/edit', to: 'artists#edit', as: "edit_profile"
+
+  patch 'artists/:id', to: 'artists#update'
+
 end

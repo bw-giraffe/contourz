@@ -1,0 +1,22 @@
+<%= form_for @artist, url: {action: "update"} do |f| %>
+	<%= f.label :username %>
+	<br>
+	<%= f.text_field :username, :placeholder => @artist.username %>
+	<br><br>
+	<%= f.label :location %>
+	<br>
+	<%= f.text_field :location, :placeholder => @artist.location %>
+	<br><br>
+	<%= f.label :email %>
+	<br>
+	<%= f.text_field :email, :placeholder => @artist.location %>
+	<br><br>
+<%= f.submit "Update" %>
+<% end %>
+<br><br>
+Want to edit your password?
+<br>
+<button type = "button" id = "updatePass">Edit Password</button>
+<div id = "updatePassword">
+	
+</div>

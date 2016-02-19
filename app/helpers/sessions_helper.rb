@@ -19,4 +19,12 @@ module SessionsHelper
     @current_artist = session[:artist_id] = nil
   end
 
+  def authorized?(artist)
+    current_artist.id == artist.to_i
+  end
+
+  def password_match?
+    
+  end
+
 end
