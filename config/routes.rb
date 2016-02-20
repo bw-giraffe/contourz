@@ -25,4 +25,7 @@ Rails.application.routes.draw do
 
   get '/drawing', to: 'drawing#new', as: "new_drawing"
 
+  get '/galleries', to: 'galleries#index', as: "galleries"
+
+  get '/galleries/:id', to: 'galleries#show'
 end

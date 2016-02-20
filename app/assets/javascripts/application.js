@@ -16,7 +16,7 @@
 
 $( document ).ready(function () {
 	console.log("Sanity check working!");
-	  console.log("sanity check");
+
 
 });
 
