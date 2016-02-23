@@ -66,10 +66,21 @@ $( document ).ready(function () {
 		$.ajax({
   			type: "POST",
   			url: "/drawing/convert",
+  			dataType: "json",
 			data: {
 				data_uri: dataURL,
 				photo_id: photoId
 			},
+			success: function (res) {
+				console.log("RES", res);
+				$('#photoRef').replaceWith(replacement(res.url, res.gallery));
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+			}
 		});
 	});
+
+	function replacement(url, gallery) {
+		new_img = "<img src='" + url + "'" + " data-gallery='" + gallery + "'" + " id= '" + "photoRef" + "'" + "/>";
+		return new_img;
+	}
 });

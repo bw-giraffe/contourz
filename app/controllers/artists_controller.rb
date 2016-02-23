@@ -18,6 +18,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find_by_id(params[:id])
+    @drawings = Drawing.where(artist_id: params[:id]).last(5)
     render :show
   end
 
