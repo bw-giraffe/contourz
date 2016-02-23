@@ -1,6 +1,26 @@
 <h1>Time to Draw</h1>
-<%= image_tag @last_drawing.image.url %>
 <div id = "paint">
-	<canvas id="drawCanvas" width="600" height="500"></canvas>
+<%= image_tag @last_photo.url, "data-gallery": @last_photo.gallery_id, id: "photoRef" %>
+<br>
+	<canvas id="drawCanvas"></canvas>
+	<svg id= "redCircle" height="15" width="15" data-fill="#FF3340">
+  		<circle cx="7" cy="7" r="7" />
+	</svg>
+	<svg id= "blueCircle" height="15" width="15" data-fill="#1C4DE4">
+  		<circle cx="7" cy="7" r="7" />
+	</svg>
+	<br>
+	<div id = "thick">
+		<svg width="20" height="9" class="fat">
+			<rect width="14" height="9"/>
+		</svg>
+		<svg width="20" height="5" class="med">
+			<rect width="14" height="6"/>
+		</svg>
+		<svg width="20" height="5" class="thin">
+			<rect width="14" height="3"/>
+		</svg>
+	</div>
+	<h1 id = "clicker"> click this </h1>
 </div>
 

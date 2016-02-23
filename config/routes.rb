@@ -28,4 +28,7 @@ Rails.application.routes.draw do
   get '/galleries', to: 'galleries#index', as: "galleries"
 
   get '/galleries/:id', to: 'galleries#show'
+
+  post '/drawing/convert', to: 'drawing#convert'
+
 end
