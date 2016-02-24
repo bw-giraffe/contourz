@@ -5,35 +5,42 @@ $( document ).ready(function () {
 
 	var painting = document.getElementById('paint');
 	var paint_style = getComputedStyle(painting);
-	canvas.width = 400;
-	canvas.height = 325;
+	canvas.width = 425;
+	canvas.height = 375;
 	// canvas.height = parseInt(paint_style.getPropertyValue('height'));
 
 	var mouse = {x: 0, y: 0};
 
 	canvas.addEventListener('mousemove', function(e) {
+		console.log("THE MOUSE IS MOVING ON THE CANVAS");
+
 		mouse.x = e.pageX - this.offsetLeft;
 		mouse.y = e.pageY - this.offsetTop;
 	}, false);
 
 	$('#blueCircle').on("click", function(e){
 		ctx.strokeStyle = $(this).attr('data-fill')
+		console.log("CHANGED COLOR TO BLUE");
 	});
 
 	$('#redCircle').on("click", function(e){
 		ctx.strokeStyle = $(this).attr('data-fill')
+		console.log("CHANGED COLOR TO RED");
 	});
 
 	$('#thick .fat').on("click", function(e) {
 		ctx.lineWidth = 10;
+		console.log("CHANGED THICKNESS TO FAT");
 	});
 
 	$('#thick .med').on("click", function(e) {
 		ctx.lineWidth = 5;
+		console.log("CHANGED THICKNESS TO MED");
 	});
 
 	$('#thick .thin').on("click", function(e) {
 		ctx.lineWidth = 2;
+		console.log("CHANGED THICKNESS TO THIN");
 	});
 
 	ctx.lineWidth = 3;
@@ -43,6 +50,7 @@ $( document ).ready(function () {
 	ctx.lineWidth = 2;
 
 	canvas.addEventListener('mousedown', function(e) {
+		console.log("YOUR MOUSE IS DOWN");
 		$('#drawCanvas').css('cursor', 'pointer')
 		ctx.beginPath();
 		ctx.moveTo(mouse.x, mouse.y);
@@ -50,13 +58,21 @@ $( document ).ready(function () {
 	}, false);
 
 	canvas.addEventListener('mouseup', function() {
+		console.log("YOUR MOUSE IS UP");
 		canvas.removeEventListener('mousemove', onPaint, false);
 	}, false);
 
 	var onPaint = function() {
+		console.log("MADE A STROKE");
 		ctx.lineTo(mouse.x, mouse.y);
 		ctx.stroke();
 	};
+
+	function resizeCanvas() {
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		redraw();
+	}
 
 	$('#clicker').on('click', function (e) {
 		var dataURL = canvas.toDataURL();

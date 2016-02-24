@@ -8,5 +8,21 @@
 	fill: #FF3340;
 }
 img#photoRef{
-	max-width: 300px;
+	max-width: 400px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#drawCanvas {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: dashed;
+	border-width: 2px;
+	display: block;
+}
+#options{
+	padding: 20px;
+	font-size: 10px;
 }
