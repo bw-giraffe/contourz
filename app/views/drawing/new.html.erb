@@ -1,6 +1,6 @@
 <h1>Time to Draw</h1>
 <div id = "paint">
-<%= image_tag @photo.url, "data-gallery": @photo.gallery_id, id: "photoRef" %>
+<%= image_tag @photo.url, "data-photo": @photo.id, id: "photoRef" %>
 <br>
 	<canvas id="drawCanvas"></canvas>
 	<svg id= "redCircle" height="15" width="15" data-fill="#FF3340">

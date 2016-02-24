@@ -37,4 +37,6 @@ Rails.application.routes.draw do
 
   delete '/drawing/:id', to: 'drawing#destroy', as: "destroy_art"
 
+  get '/galleries/:id/renditions', to: 'galleries#renditions', as: "renditions"
+
 end

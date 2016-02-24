@@ -1,4 +1,11 @@
 <h1><%= @gallery.theme %></h1>
-<% @photos.each do |p| %>
-	<%= image_tag p.url %>
-<% end %> 
+<div class = "row">
+	<div id = "galleryPic">
+		<% @photos.each do |p| %>
+		<div class= "col-sm-3 col-sm-offset-1"><%= link_to image_tag(p.url, id: "reference"), renditions_path(p.id) %></div>
+			<br>
+		<% end %> 
+	</div>
+</div>
+
+

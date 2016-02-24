@@ -19,12 +19,14 @@ class DrawingController < ApplicationController
       format.html
       format.json do
         p "!--RENDERING IN JSON--!"
-        render json: {url: @photo.url, gallery: @photo.gallery_id, seen: message}
+        render json: {url: @photo.url, photo: @photo.id, seen: message}
       end
     end
   end
   
   def convert
+    p "params photo_id !!!!!!!! #{params[:photo_id]}"
+    p "params photo_id !CLASS!!! #{params[:photo_id].class}"
     data_uri = params[:data_uri]
     photo_id = params[:photo_id]
     image_data = Base64.decode64( data_uri.slice("data:image/png;base64,".length..-1) )

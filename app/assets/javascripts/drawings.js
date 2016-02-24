@@ -60,7 +60,7 @@ $( document ).ready(function () {
 
 	$('#clicker').on('click', function (e) {
 		var dataURL = canvas.toDataURL();
-		var photoId = $('#photoRef').attr('data-gallery')
+		var photoId = $('#photoRef').attr('data-photo')
 		document.getElementById('drawCanvas').src = dataURL;
 		console.log(dataURL);
 		$.ajax({
@@ -73,14 +73,14 @@ $( document ).ready(function () {
 			},
 			success: function (res) {
 				console.log("RES", res);
-				$('#photoRef').replaceWith(replacement(res.url, res.gallery));
+				$('#photoRef').replaceWith(replacement(res.url, res.photo));
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 			}
 		});
 	});
 
-	function replacement(url, gallery) {
-		new_img = "<img src='" + url + "'" + " data-gallery='" + gallery + "'" + " id= '" + "photoRef" + "'" + "/>";
+	function replacement(url, photo) {
+		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "photoRef" + "'" + "/>";
 		return new_img;
 	}
 });
