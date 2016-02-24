@@ -1,5 +1,12 @@
 class DrawingController < ApplicationController
   require 'base64'
+  before_action only: [:show, :destroy] do
+    drawing = Drawing.find_by_id(params[:id])
+    if(!authorized?(drawing.artist_id))
+      flash[:notice] = "You do not have access."
+      redirect_to artist_path(current_artist.id)
+    end
+  end
 
   def new
     @photo = Photo.order("RANDOM()").first 
@@ -26,8 +33,15 @@ class DrawingController < ApplicationController
   end
 
   def show
-    @drawing = Drawing.find_by_id(params[:artid])
+    @drawing = Drawing.find_by_id(params[:id])
     render :show
+  end
+
+  def destroy
+    @drawing = Drawing.find_by_id(params[:id])
+    @drawing.destroy
+    flash[:notice] = "Successfully removed art"
+    redirect_to artwork_path(current_artist.id)
   end
 
 end

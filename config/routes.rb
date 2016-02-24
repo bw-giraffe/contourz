@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   get '/artists/:id/drawings', to: 'artists#drawings', as: "artwork"
 
-  get '/artists/:id/drawings/:artid', to: 'drawing#show', as: "artwork_show"
+  get '/drawing/:id', to: 'drawing#show', as: "art"
+
+  delete '/drawing/:id', to: 'drawing#destroy', as: "destroy_art"
 
 end

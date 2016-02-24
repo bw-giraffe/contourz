@@ -1,4 +1,8 @@
 class ArtistsController < ApplicationController
+  before_action :logged_in?, only: [:edit, :update, :drawings, ]
+  before_action only: [:edit, :update, :drawings] do
+    authorized?(params[:id])
+  end
 
   def index
     @artists = Artist.all
@@ -54,6 +58,7 @@ class ArtistsController < ApplicationController
   end
 
   def drawings
+    @drawings = Drawing.where(artist_id: params[:id])
     render :artwork
   end
 
@@ -61,6 +66,10 @@ class ArtistsController < ApplicationController
 
   def artist_params
     params.require(:artist).permit(:username, :location, :email, :password)
+  end
+
+  def current_artist?
+
   end
 
 
