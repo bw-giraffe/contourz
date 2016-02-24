@@ -25,4 +25,9 @@ class DrawingController < ApplicationController
     redirect_to new_drawing_path
   end
 
+  def show
+    @drawing = Drawing.find_by_id(params[:artid])
+    render :show
+  end
+
 end

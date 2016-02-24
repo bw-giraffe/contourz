@@ -15,7 +15,13 @@
 	<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
 </div>
 
+<div id "allDrawings">
+	<%= button_to "All Drawings", artwork_path, :method => :get %>
+</div>
 
-<%= render_gallery_for @drawings  %>
-
-
+<div class="owl-carousel">
+	<% @drawings.each do |d| %>
+  		<div><%= image_tag d.image.url %></div>
+  	<% end %>
+</div>
+	   

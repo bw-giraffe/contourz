@@ -85,6 +85,8 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    owlcarousel-rails (1.1.3.3)
+      jquery-rails
     paperclip (4.3.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -167,6 +169,7 @@ DEPENDENCIES
   hermitage
   jbuilder (~> 2.0)
   jquery-rails
+  owlcarousel-rails
   paperclip
   pg (~> 0.15)
   rails (= 4.2.5.1)

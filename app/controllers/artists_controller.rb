@@ -18,7 +18,7 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find_by_id(params[:id])
-    @drawings = Drawing.where(artist_id: params[:id]).last(5)
+    @drawings = Drawing.where(artist_id: params[:id]).last(14)
     render :show
   end
 
@@ -51,6 +51,10 @@ class ArtistsController < ApplicationController
 
   def home
     render :home
+  end
+
+  def drawings
+    render :artwork
   end
 
   private

@@ -31,4 +31,8 @@ Rails.application.routes.draw do
 
   post '/drawing/convert', to: 'drawing#convert'
 
+  get '/artists/:id/drawings', to: 'artists#drawings', as: "artwork"
+
+  get '/artists/:id/drawings/:artid', to: 'drawing#show', as: "artwork_show"
+
 end
