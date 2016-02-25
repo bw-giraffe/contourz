@@ -14,7 +14,7 @@
 	border-style: dashed;
 	border-width: 2px;
 	display: block;
-    height:375px;
+    height:300px;
     width: 425px;
 }
 #cont > canvas {
@@ -50,5 +50,8 @@ img#photoRef{
     margin-left: auto;
     margin-right: auto;
     width: 6em;
+}
+#options{
+	font-size: 18px;
 }
 

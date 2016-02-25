@@ -35,7 +35,6 @@ $( document ).ready(function () {
     		'seconds': seconds
   		};
    	}
-
    	
    	function initializeClock(id, endtime){
 	  var clock = document.getElementById(id);

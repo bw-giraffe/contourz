@@ -6,9 +6,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
-
+	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,6 +33,7 @@
 				</li>
 				<li><%= link_to "Galleries", galleries_path %></li>
 				<li><%= link_to "Profile", artist_path(current_artist)%></li>
+				<li><%= link_to "Log Out", logout_path %></li>
 			<% else %>
 				<li><%= link_to "Create Account", new_artist_path %></li>
 				<li><%= link_to "Log In", login_path %></li>
@@ -43,7 +43,6 @@
 
 	  </div><!-- /.container-fluid -->
 	</nav>
-<br>
 <br>
 <br>
 <% flash.each do |name, msg| %>
