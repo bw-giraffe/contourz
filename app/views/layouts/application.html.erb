@@ -7,26 +7,47 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
-<ul>
-	<% if current_artist%>
-		<li><%= link_to "Home", homepage_path %>
-		</li>
-		<li><%= link_to "Draw", new_drawing_path %>
-		</li>
-		<li><%= link_to "Galleries", galleries_path %></li>
-		<li><%= link_to "Profile", artist_path(current_artist)%></li>
-		<li><%= link_to "Log Out", logout_path %></li>
-	<% else %>
-		<li><%= link_to "Home", homepage_path %>
-		</li>
-		<li><%= link_to "Create Account", new_artist_path %></li>
-		<li><%= link_to "Log In", login_path %></li>
-	<% end %>
-</ul>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Home</a>
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	      </button>
+	    </div>
 
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div id="navbar" class="navbar-collapse collapse">
+	      <ul class="nav navbar-nav navbar-right">
+			 <% if current_artist %>
+				<li><%= link_to "Home", homepage_path %>
+				</li>
+				<li><%= link_to "Draw", new_drawing_path %>
+				</li>
+				<li><%= link_to "Galleries", galleries_path %></li>
+				<li><%= link_to "Profile", artist_path(current_artist)%></li>
+			<% else %>
+				 <li><%= link_to "Home", homepage_path %>
+				</li>
+				<li><%= link_to "Create Account", new_artist_path %></li>
+				<li><%= link_to "Log In", login_path %></li>
+			<% end %>
+		 </ul>
+	    </div><!-- /.navbar-collapse -->
+
+	  </div><!-- /.container-fluid -->
+	</nav>
+<br>
+<br>
+<br>
 <% flash.each do |name, msg| %>
 	<p>
 		<small><%= name.capitalize%>: <%= msg %> </small>

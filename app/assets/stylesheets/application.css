@@ -15,3 +15,7 @@
  *= require owl.carousel
  *= require owl.theme
  */
+
+body{
+	background-image: url("http://i64.tinypic.com/1zz515f.jpg");
+}

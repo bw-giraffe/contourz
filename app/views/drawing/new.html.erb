@@ -9,26 +9,19 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-10 col-xs-offset-2">
-	<span id="time">00:00</span>
-		<h1 id="go">GO!</button>
-	 </h1>
-</div>
-	 </div>
-</div>
-<div class="container">
-	<div id = "paint">
-		<canvas id="drawCanvas"></canvas>
-	</div>
-</div>
-<div class="row">
 	<div class="col-xs-8 col-xs-offset-4">
 	<div id="options">
 		colors   
+		<svg id= "blackCircle" height="15" width="15" data-fill="#2F2F32">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
 		<svg id= "redCircle" height="15" width="15" data-fill="#FF3340">
 			<circle cx="7" cy="7" r="7" />
 		</svg>
 		<svg id= "blueCircle" height="15" width="15" data-fill="#1C4DE4">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
+		<svg id= "yelCircle" height="15" width="15" data-fill="#FFFF00">
 			<circle cx="7" cy="7" r="7" />
 		</svg>
 		&nbsp thickness   
@@ -43,12 +36,26 @@
 		</svg>
 	</div>
 	</div>
-<h1 id = "clicker"> click this </h1>
-<button type="button" disabled>next</button>
 <div class="row">
-	<div class="col-xs-2 col-xs-offset-10" id="sessionButtons">
-	</div>
+
 </div>
+<div class="container">
+	<div id="cont">
+    <canvas id="canvasBottom" width=425 height=375></canvas>
+    <canvas id="canvasTop" width=425 height=375></canvas>
+</div>
+</div>
+	<div class="col-xs-6 col-xs-offset-4">
+		<h5 id="time">&#9786</h5>
+	</div>
+	<div class="col-xs-4 col-xs-offset-8" id="sessionButtons">
+		<button type='button' id='next' class="btn btn-warning">next</button>
+		&nbsp<button type='button' id='save' class="btn btn-success">save</button>
+		&nbsp<button type='button' id='go' class="btn btn-danger">GO</button>
+	</div>
+	<div class="col-xs-12">
+		<br><br><br>
+	</div>
 
 
 

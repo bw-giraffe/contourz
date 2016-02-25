@@ -15,10 +15,10 @@
 //= require jquery_ujs
 //= require_tree .
 //= require owl.carousel
+//= require moment
+
 
 $( document ).ready(function () {
 	console.log("Sanity check working!");
 
-
 });
-

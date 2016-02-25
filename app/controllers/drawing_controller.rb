@@ -9,6 +9,7 @@ class DrawingController < ApplicationController
   end
 
   def new
+    p "YOU HIT THE NEW DRAWING CONTROLLER";
     @photo = Photo.order("RANDOM()").first 
     @drawing = Drawing.new
     message = ""
@@ -26,12 +27,15 @@ class DrawingController < ApplicationController
   
   def convert
     p "params photo_id !!!!!!!! #{params[:photo_id]}"
-    p "params photo_id !CLASS!!! #{params[:photo_id].class}"
-    data_uri = params[:data_uri]
-    photo_id = params[:photo_id]
-    image_data = Base64.decode64( data_uri.slice("data:image/png;base64,".length..-1) )
-    store_drawing(image_data, photo_id)
-    redirect_to new_drawing_path
+    if(params[:photoOnly]) 
+      redirect_to new_drawing_path
+    else 
+      data_uri = params[:data_uri]
+      photo_id = params[:photo_id]
+      image_data = Base64.decode64( data_uri.slice("data:image/png;base64,".length..-1) )
+      store_drawing(image_data, photo_id)
+      redirect_to new_drawing_path
+    end
   end
 
   def show

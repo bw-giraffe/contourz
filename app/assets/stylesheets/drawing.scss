@@ -1,28 +1,54 @@
 // Place all the styles related to the drawing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#body{
+	font-family: "verdana";
+}
+#cont {
+	background: #FFFFFF;
+	padding-left: 0;
+	padding-right: 0;
+    position:relative;
+    margin-left: auto;
+	margin-right: auto;
+	border-style: dashed;
+	border-width: 2px;
+	display: block;
+    height:375px;
+    width: 425px;
+}
+#cont > canvas {
+    position:absolute;
+    left:0;
+    top:0;
+    cursor:crosshair;
+}
 #blueCircle{
 	fill: #1C4DE4;
 }
 #redCircle{
 	fill: #FF3340;
 }
+#yelCircle{
+	fill: #F9DF13;
+}
+#blackCircle{
+	fill: #2F2F32;
+}
 img#photoRef{
 	max-width: 400px;
+	max-height: 300px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-}
-#drawCanvas {
-	padding-left: 0;
-	padding-right: 0;
-	margin-left: auto;
-	margin-right: auto;
-	border-style: dashed;
-	border-width: 2px;
-	display: block;
 }
 #options{
 	padding: 20px;
 	font-size: 10px;
 }
+#time{
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em;
+}
+

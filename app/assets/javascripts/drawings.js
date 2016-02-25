@@ -1,59 +1,77 @@
 $( document ).ready(function () {
 	console.log("Draw page sanity check working!");
 	
-	//countdown
-	function startTimer(duration, display) {
-    	var timer = duration, mins, secs;
-   		setInterval(function () {
-	        mins = parseInt(timer / 60, 10)
-	        secs = parseInt(timer % 60, 10);
+	var curtain = new Image();
+	curtain.src = "http://i68.tinypic.com/icppqd.png";
 
-	        mins = mins < 10 ? "0" + mins : mins;
-	        secs = secs < 10 ? "0" + secs : secs;
-
-	        display.text(mins + ":" + secs);
-	        if (--timer < 0) {
-	            
-	        }
-    	}, 1000);
-	}
-	//60 * 2,
-    var amountOfTime= 5;
-    display = $('#time');
-
-    function startSession() {
-    	startTimer(amountOfTime, display);
-    	$('#go').hide();
-    }
-
-    function endSession() {
-    	display.hide();
-    	sessionButtons();
-    	display.show();
-    	startTimer(amountOfTime, display);
-    }
+	var CURRENT_INTERVAL;
+	$('#canvasTop').hide();
+	buttonsHide();
 
     $('#go').on('click', function (e) {
-    	startSession();
+    	$('#canvasTop').show();
+    	$('#go').hide();
+    	buttonsHide();
+    	clearInterval( CURRENT_INTERVAL );
+    	CURRENT_INTERVAL = initializeClock('time', getTime());
     });
 
+    function getTime() {
+   		var twoMins = moment().add(80, 'seconds');
+   		return twoMins._d
+   	}
 
-	//canvas
-	var canvas = document.getElementById('drawCanvas');
-	var ctx = canvas.getContext('2d');
+   	function getTimeRemaining(endtime){
+   		var t = Date.parse(endtime) - Date.parse(new Date());
+   		var seconds = Math.floor( (t/1000) % 60);
+   		var minutes = Math.floor( (t/1000/60) % 60 );
+   		var hours = Math.floor( (t/(1000*60*60)) % 24 );
+   		var days = Math.floor( t/(1000*60*60*24) );
+   		return {
+    		'total': t,
+    		'days': days,
+    		'hours': hours,
+    		'minutes': minutes,
+    		'seconds': seconds
+  		};
+   	}
 
-	var painting = document.getElementById('paint');
-	var paint_style = getComputedStyle(painting);
-	canvas.width = 425;
-	canvas.height = 375;
-	// canvas.height = parseInt(paint_style.getPropertyValue('height'));
+   	
+   	function initializeClock(id, endtime){
+	  var clock = document.getElementById(id);
+	  function updateClock(){
+  		var t = getTimeRemaining(endtime);
+  		clock.innerHTML = 
+                    'minutes: ' + t.minutes + '  ' + '  seconds: ' + t.seconds;
+  		if(t.total<=0){
+    	clearInterval(timeinterval);
+    	$('#canvasTop').hide();
+    	buttonsShow();
+  		}
+	}
+	updateClock(); // run function once at first to avoid delay
+	var timeinterval = setInterval(updateClock,1000);
+	return timeinterval;
+	}
 
-	var mouse = {x: 0, y: 0};
+	// DRAW
+	var curtain = new Image(),
+	    canvas = document.getElementById('canvasBottom'),
+	    canvasTop = document.getElementById('canvasTop'),
+	    ctx = canvas.getContext('2d'),
+	    ctxMouse = canvasTop.getContext('2d');
 
-	canvas.addEventListener('mousemove', function(e) {
-		mouse.x = e.pageX - this.offsetLeft;
-		mouse.y = e.pageY - this.offsetTop;
-	}, false);
+	curtain.onload = setup;
+	curtain.src = "http://i63.tinypic.com/zjxo5g.png";
+
+	ctx.lineWidth = 3;
+	ctx.lineJoin = 'round';
+	ctx.lineCap = 'round';
+	ctx.strokeStyle = '#FFFF00';
+
+	$('#blackCircle').on("click", function(e){
+		ctx.strokeStyle = $(this).attr('data-fill')
+	});
 
 	$('#blueCircle').on("click", function(e){
 		ctx.strokeStyle = $(this).attr('data-fill')
@@ -63,50 +81,64 @@ $( document ).ready(function () {
 		ctx.strokeStyle = $(this).attr('data-fill')
 	});
 
-	$('#thick .fat').on("click", function(e) {
+	$('#yelCircle').on("click", function(e){
+		ctx.strokeStyle = $(this).attr('data-fill')
+	});
+
+	$('#options .fat').on("click", function(e) {
 		ctx.lineWidth = 10;
 	});
 
-	$('#thick .med').on("click", function(e) {
+	$('#options .med').on("click", function(e) {
 		ctx.lineWidth = 5;
 	});
 
-	$('#thick .thin').on("click", function(e) {
+	$('#options .thin').on("click", function(e) {
 		ctx.lineWidth = 2;
 	});
 
-	ctx.lineWidth = 3;
-	ctx.lineJoin = 'round';
-	ctx.lineCap = 'round';
-	ctx.strokeStyle = '#00CC99';
-	ctx.lineWidth = 2;
-
-	canvas.addEventListener('mousedown', function(e) {
-		$('#drawCanvas').css('cursor', 'pointer')
-		ctx.beginPath();
-		ctx.moveTo(mouse.x, mouse.y);
-		canvas.addEventListener('mousemove', onPaint, false);
-	}, false);
-
-	canvas.addEventListener('mouseup', function() {
-		canvas.removeEventListener('mousemove', onPaint, false);
-	}, false);
-
-	var onPaint = function() {
-		ctx.lineTo(mouse.x, mouse.y);
-		ctx.stroke();
-	};
-
-	function resizeCanvas() {
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-		redraw();
+	function setup() {
+	    ctxMouse.drawImage(this, 0, 0);
 	}
 
-	$('#clicker').on('click', function (e) {
+	var px, py, isDown = false;
+
+	canvasTop.onmousedown = function (e) {
+	    var pos = getXY(e);
+	    px = pos.x;
+	    py = pos.y;
+	    isDown = true;
+	}
+
+	canvasTop.onmouseup = function () {
+	    isDown = false;
+	}
+
+	canvasTop.onmousemove = function (e) {
+	    if (isDown) {
+	        var pos = getXY(e);
+	        ctx.beginPath();
+	        ctx.moveTo(px, py);
+	        ctx.lineTo(pos.x, pos.y);
+	        ctx.stroke();
+	        px = pos.x;
+	        py = pos.y;
+	    }
+	}
+
+function getXY(e) {
+    var rect = canvasTop.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
+
+	$('#save').on('click', function (e) {
+		console.log("YOU ENTERED SAVE");
 		var dataURL = canvas.toDataURL();
 		var photoId = $('#photoRef').attr('data-photo')
-		document.getElementById('drawCanvas').src = dataURL;
+		document.getElementById('canvasBottom').src = dataURL;
 		console.log(dataURL);
 		$.ajax({
   			type: "POST",
@@ -120,18 +152,41 @@ $( document ).ready(function () {
 				console.log("RES", res);
 				$('#photoRef').replaceWith(replacement(res.url, res.photo));
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				buttonsHide();
+				$('#go').show();
 			}
 		});
 	});
+
+	$('#next').on('click', function (e) {
+		$.ajax({
+			type: "POST",
+			url: "/drawing/convert",
+			dataType: "json",
+			data: {
+				photoOnly: true
+			},
+			success: function (res) {
+				console.log("YOUR RESPONSE FROM THE CONTROLLER", res);
+				$('#photoRef').replaceWith(replacement(res.url, res.photo));
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				buttonsHide();
+				$('#go').show();
+			}
+
+		});
+	})
 
 	function replacement(url, photo) {
 		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "photoRef" + "'" + "/>";
 		return new_img;
 	}
 
-	function sessionButtons() {
-		buttons = "<button type='button' disabled>next</button>" + "&nbsp<button type='button' disabled>save</button>";
-		$('#sessionButtons').append(buttons);
+	function buttonsHide(){
+		$('#save').hide();
+	}
+	function buttonsShow() {
+		$('#save').show();
 	}
 
 });
