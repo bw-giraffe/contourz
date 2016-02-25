@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
 
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
