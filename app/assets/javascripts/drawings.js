@@ -2,7 +2,7 @@ $( document ).ready(function () {
 	console.log("Draw page sanity check working!");
 	
 	var curtain = new Image();
-	curtain.src = "http://i68.tinypic.com/25qsmpw.png";
+	curtain.src = "http://i65.tinypic.com/4v3ke9.png";
 
 	var CURRENT_INTERVAL;
 	$('#canvasTop').hide();
