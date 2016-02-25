@@ -1,5 +1,44 @@
 $( document ).ready(function () {
 	console.log("Draw page sanity check working!");
+	
+	//countdown
+	function startTimer(duration, display) {
+    	var timer = duration, mins, secs;
+   		setInterval(function () {
+	        mins = parseInt(timer / 60, 10)
+	        secs = parseInt(timer % 60, 10);
+
+	        mins = mins < 10 ? "0" + mins : mins;
+	        secs = secs < 10 ? "0" + secs : secs;
+
+	        display.text(mins + ":" + secs);
+	        if (--timer < 0) {
+	            
+	        }
+    	}, 1000);
+	}
+	//60 * 2,
+    var amountOfTime= 5;
+    display = $('#time');
+
+    function startSession() {
+    	startTimer(amountOfTime, display);
+    	$('#go').hide();
+    }
+
+    function endSession() {
+    	display.hide();
+    	sessionButtons();
+    	display.show();
+    	startTimer(amountOfTime, display);
+    }
+
+    $('#go').on('click', function (e) {
+    	startSession();
+    });
+
+
+	//canvas
 	var canvas = document.getElementById('drawCanvas');
 	var ctx = canvas.getContext('2d');
 
@@ -12,35 +51,28 @@ $( document ).ready(function () {
 	var mouse = {x: 0, y: 0};
 
 	canvas.addEventListener('mousemove', function(e) {
-		console.log("THE MOUSE IS MOVING ON THE CANVAS");
-
 		mouse.x = e.pageX - this.offsetLeft;
 		mouse.y = e.pageY - this.offsetTop;
 	}, false);
 
 	$('#blueCircle').on("click", function(e){
 		ctx.strokeStyle = $(this).attr('data-fill')
-		console.log("CHANGED COLOR TO BLUE");
 	});
 
 	$('#redCircle').on("click", function(e){
 		ctx.strokeStyle = $(this).attr('data-fill')
-		console.log("CHANGED COLOR TO RED");
 	});
 
 	$('#thick .fat').on("click", function(e) {
 		ctx.lineWidth = 10;
-		console.log("CHANGED THICKNESS TO FAT");
 	});
 
 	$('#thick .med').on("click", function(e) {
 		ctx.lineWidth = 5;
-		console.log("CHANGED THICKNESS TO MED");
 	});
 
 	$('#thick .thin').on("click", function(e) {
 		ctx.lineWidth = 2;
-		console.log("CHANGED THICKNESS TO THIN");
 	});
 
 	ctx.lineWidth = 3;
@@ -50,7 +82,6 @@ $( document ).ready(function () {
 	ctx.lineWidth = 2;
 
 	canvas.addEventListener('mousedown', function(e) {
-		console.log("YOUR MOUSE IS DOWN");
 		$('#drawCanvas').css('cursor', 'pointer')
 		ctx.beginPath();
 		ctx.moveTo(mouse.x, mouse.y);
@@ -58,12 +89,10 @@ $( document ).ready(function () {
 	}, false);
 
 	canvas.addEventListener('mouseup', function() {
-		console.log("YOUR MOUSE IS UP");
 		canvas.removeEventListener('mousemove', onPaint, false);
 	}, false);
 
 	var onPaint = function() {
-		console.log("MADE A STROKE");
 		ctx.lineTo(mouse.x, mouse.y);
 		ctx.stroke();
 	};
@@ -99,4 +128,10 @@ $( document ).ready(function () {
 		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "photoRef" + "'" + "/>";
 		return new_img;
 	}
+
+	function sessionButtons() {
+		buttons = "<button type='button' disabled>next</button>" + "&nbsp<button type='button' disabled>save</button>";
+		$('#sessionButtons').append(buttons);
+	}
+
 });
