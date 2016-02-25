@@ -35,8 +35,6 @@
 				<li><%= link_to "Galleries", galleries_path %></li>
 				<li><%= link_to "Profile", artist_path(current_artist)%></li>
 			<% else %>
-				 <li><%= link_to "Home", homepage_path %>
-				</li>
 				<li><%= link_to "Create Account", new_artist_path %></li>
 				<li><%= link_to "Log In", login_path %></li>
 			<% end %>
