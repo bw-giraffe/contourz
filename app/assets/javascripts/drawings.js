@@ -17,7 +17,7 @@ $( document ).ready(function () {
     });
 
     function getTime() {
-   		var twoMins = moment().add(80, 'seconds');
+   		var twoMins = moment().add(20, 'seconds');
    		return twoMins._d
    	}
 
