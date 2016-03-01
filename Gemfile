@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
 
+gem 'figaro'
+
+gem 'aws-sdk'
+
 gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 
 # Use ActiveModel has_secure_password

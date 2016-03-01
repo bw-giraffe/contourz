@@ -21,6 +21,14 @@ body, body * {
 body{
 	background-image: url("http://i64.tinypic.com/1zz515f.jpg");
 }
-button{
-	font-size: 60px;
+.navbar a{
+	size: 60px;
+}
+input[type="text"]
+{
+    font-family: Helvetica !important;
+}
+input:placeholder-shown {
+  	font-family: Helvetica !important;
+	size: 10px;
 }
