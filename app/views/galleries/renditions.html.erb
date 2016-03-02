@@ -1,7 +1,6 @@
 <h1>Welcome to the Renditions Page</h1>
 <h2> this was the last drawing created 
-<%= image_tag @lastdrawing.image.url %>
-<%= @lastdrawing.image.url %>
+<%= image_tag(@lastdrawing.image.url(:medium)) %>
 </h2>
 <div class="container">
 	<div class ="row">

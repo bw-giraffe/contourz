@@ -27,7 +27,7 @@ gem 'paperclip'
 
 gem 'figaro'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 
