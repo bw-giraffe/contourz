@@ -24,11 +24,25 @@ body{
 .navbar a{
 	size: 60px;
 }
-input[type="text"]
-{
-    font-family: Helvetica !important;
-}
 input:placeholder-shown {
   	font-family: Helvetica !important;
 	size: 10px;
 }
+#login input[type="text"]{
+	font-family: Helvetica !important;
+	margin:5px;
+}
+#login input[type="password"]{
+	font-family: Helvetica !important;
+	margin:5px;
+}
+#login #submit{
+	font-family: Helvetica !important;
+	margin:5px;
+}
+
+button{
+	size: 18px;
+}
+
+

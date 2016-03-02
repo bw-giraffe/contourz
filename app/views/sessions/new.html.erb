@@ -1,3 +1,4 @@
+<div class="col-xs-8 col-xs-offset-4" id="login">
 <h1>Login</h1>
 <%= form_for @artist, url: "/sessions", method: "post" do |f| %>
   <div>
@@ -6,5 +7,6 @@
   <div>
     <%= f.password_field :password, placeholder: "Password" %>
   </div>
-  <%= f.submit "Sign In" %>
+  <%= f.submit "Sign In", id: "submit" %>
 <% end %>
+</div>
