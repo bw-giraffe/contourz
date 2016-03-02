@@ -21,7 +21,7 @@
 
 <div class="owl-carousel" id="artistslideshow">
 	<% @drawings.each do |d| %>
-  		<div><%= image_tag d.image.url %></div>
+  		<div><%= image_tag d.image.url(:medium) %></div>
   	<% end %>
 </div>
 	   
