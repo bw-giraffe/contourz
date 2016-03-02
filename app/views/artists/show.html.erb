@@ -19,7 +19,7 @@
 	<%= button_to "All Drawings", artwork_path, :method => :get %>
 </div>
 
-<div class="owl-carousel">
+<div class="owl-carousel" id="artistslideshow">
 	<% @drawings.each do |d| %>
   		<div><%= image_tag d.image.url %></div>
   	<% end %>

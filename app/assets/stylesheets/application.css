@@ -22,7 +22,7 @@ body{
 	background-image: url("http://i64.tinypic.com/1zz515f.jpg");
 }
 .navbar a{
-	size: 60px;
+	font-size: 22px;
 }
 input:placeholder-shown {
   	font-family: Helvetica !important;
@@ -36,13 +36,19 @@ input:placeholder-shown {
 	font-family: Helvetica !important;
 	margin:5px;
 }
-#login #submit{
+#submit{
 	font-family: Helvetica !important;
 	margin:5px;
 }
-
-button{
-	size: 18px;
+#signup input[type="text"]{
+	font-family: Helvetica !important;
+	margin:5px;
 }
-
+#signup input[type="password"]{
+	font-family: Helvetica !important;
+	margin:5px;
+}
+button {
+	font-size: 22px !important;
+}
 
