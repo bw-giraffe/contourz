@@ -50,4 +50,8 @@ class DrawingController < ApplicationController
     redirect_to artwork_path(current_artist.id)
   end
 
+  def test
+    render :test
+  end
+
 end

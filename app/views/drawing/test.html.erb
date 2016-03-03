@@ -1,0 +1,58 @@
+<style>
+.l-box {
+	padding: 1em;
+}
+</style>
+<div class="pure-g">
+    <div class="pure-u-7-24" style="background: pink;">Halfsies
+	    <div class="l-box"> things in here </div>
+	    <div class="l-box"> more things <img src="http://mentalfloss.com/sites/default/legacy/blogs/wp-content/uploads/2012/08/abe-lincoln-last-portrait.jpg" style="max-width: 200px"></div>
+    </div>
+    <div class="pure-u-1-7">
+    <div class="l-box">
+    	<div id="paint">
+  		<canvas id="myCanvas"></canvas>
+	</div>
+    <script>
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+ 
+var painting = document.getElementById('paint');
+var paint_style = getComputedStyle(painting);
+canvas.width = parseInt(550);
+canvas.height = parseInt(400);
+
+var mouse = {x: 0, y: 0};
+ 
+canvas.addEventListener('mousemove', function(e) {
+  mouse.x = e.pageX - this.offsetLeft;
+  mouse.y = e.pageY - this.offsetTop;
+}, false);
+
+ctx.lineWidth = 3;
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.strokeStyle = '#00CC99';
+ 
+canvas.addEventListener('mousedown', function(e) {
+    ctx.beginPath();
+    ctx.moveTo(mouse.x, mouse.y);
+ 
+    canvas.addEventListener('mousemove', onPaint, false);
+}, false);
+ 
+canvas.addEventListener('mouseup', function() {
+    canvas.removeEventListener('mousemove', onPaint, false);
+}, false);
+ 
+var onPaint = function() {
+    ctx.lineTo(mouse.x, mouse.y);
+    ctx.stroke();
+};
+
+    </script>
+		
+	</div>
+</div>
+</div>
+ 
