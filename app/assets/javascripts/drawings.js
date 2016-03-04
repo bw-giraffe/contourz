@@ -39,9 +39,55 @@ $( document ).ready(function () {
 	
 		$('#mobileRefPhoto').on('touchstart', function (e) {
 			ctxHidden.drawImage(mCurtain, 0, 0);
-		})
+		});
 
+		$('#saveButtons').hide();
+		$('#drawButtons').hide();
 		
+		var CURRENT_INTERVAL = 0;
+		
+		var countdown = {
+
+			getCurrent: function() {
+				var randomInterval = Math.random(10, 80);
+				var twoMins = moment().add(randomInterval, 'seconds');
+   				return twoMins._d
+			},
+
+			getRemaining: function(endtime) {
+				var t = Date.parse(endtime) - Date.parse(new Date());
+				var seconds = Math.floor( (t/1000) % 60);
+				var minutes = Math.floor( (t/1000/60) % 60);
+				return {
+					'total': t,
+					'minutes': minutes,
+					'seconds': seconds
+				}
+			},
+
+			start: function(id, endtime) {
+				function updateCountdown(){
+					var countdown = document.getElementById(id);
+					var t = getTimeRemaining(endtime);
+					countdown.append('minutes: ' + t.minutes + ' ' + '  seconds: ' + t.seconds);
+					if(t.total<=0) {
+						clearInterval(timeinterval);
+					}
+				}
+				updateCountdown();
+				var timeinterval = setInterval(updateCountdown, 1000);
+				return timeinterval;
+			},
+
+			clear: function() {
+				clearInterval( CURRENT_INTERVAL );
+			}
+
+		}
+
+		var newCountdown = new Countdown();
+    	CURRENT_INTERVAL = newCountdown.start('countdown', newCountdown.getCurrent());
+
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
