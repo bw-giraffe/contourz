@@ -1,0 +1,49 @@
+<style>
+	.circle{
+		border-radius: 50%;
+		behavior: url(PIE.htc);
+		width: 20px;
+		height: 20px;
+		border: 1px dashed;
+	}
+</style>
+
+<div class="pure-g">
+	<div class="pure-u-24-24">
+	Timer will go here
+	</div>
+	<div class="pure-u-24-24">
+		<%= image_tag @photo.url, "data-photo": @photo.id, class: "pure-img", id: "mobileRefPhoto"%>
+	</div>
+	<div class="pure-u-24-24">
+	<div id="colors">
+		<div class="circle pure-u-1-4" data-fill="#2F2F32">
+		</div>
+		<div class="circle pure-u-1-4" data-fill="#FF3340">
+			
+		</div>
+		<div class="circle pure-u-1-4" data-fill="#1C4DE4">
+		</div>
+		<div class="circle pure-u-1-4" data-fill="#FFFF00">
+		</div>
+
+	</div>
+  	<div id="strokes">
+  		&nbsp thickness
+			<svg width="20" height="9" data-stroke="5">
+			<rect width="14" height="9"/>
+			</svg>
+			<svg width="20" height="5" data-stroke="3">
+			<rect width="14" height="6"/>
+			</svg>
+			<svg width="20" height="5" data-stroke="1">
+			<rect width="14" height="3"/>
+			</svg>
+	</div>
+
+	</div>
+	<div class="pure-u-24-24">
+		<canvas id="mCanvasBottom" width=320 height=280></canvas>
+    	<!-- <canvas id="mCanvasTop" width=320 height=280></canvas> -->
+	</div>
+</div>

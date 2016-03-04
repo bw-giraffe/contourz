@@ -1,5 +1,7 @@
 class DrawingController < ApplicationController
   require 'base64'
+  require "browser"
+  browser = Browser.new("Some User Agent", accept_language: "en-us")
   before_action only: [:show, :destroy] do
     drawing = Drawing.find_by_id(params[:id])
     if(!authorized?(drawing.artist_id))

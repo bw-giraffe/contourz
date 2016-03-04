@@ -17,10 +17,8 @@
 //= require owl.carousel
 //= require moment
 
-
 $( document ).ready(function () {
 	console.log("application!");
-
 	var artistImgs = $('#artistslideshow');
 	var gallImgs = $('#slides');
 

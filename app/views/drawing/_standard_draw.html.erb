@@ -1,0 +1,57 @@
+<div class="row">	
+	<div class="col-xs-8 col-xs-offset-4">
+	</div>
+</div>
+<div id="refImage">
+	<div class="container">
+	<%= image_tag @photo.url, "data-photo": @photo.id, id: "photoRef"%>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-4">
+	<div id="options">
+		colors   
+		<svg id= "blackCircle" height="15" width="15" data-fill="#2F2F32">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
+		<svg id= "redCircle" height="15" width="15" data-fill="#FF3340">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
+		<svg id= "blueCircle" height="15" width="15" data-fill="#1C4DE4">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
+		<svg id= "yelCircle" height="15" width="15" data-fill="#FFFF00">
+			<circle cx="7" cy="7" r="7" />
+		</svg>
+		&nbsp thickness   
+		<svg width="20" height="9" class="fat">
+		<rect width="14" height="9"/>
+		</svg>
+		<svg width="20" height="5" class="med">
+		<rect width="14" height="6"/>
+		</svg>
+		<svg width="20" height="5" class="thin">
+		<rect width="14" height="3"/>
+		</svg>
+	</div>
+	</div>
+<div class="row">
+
+</div>
+<div class="container">
+	<div id="cont">
+    <canvas id="canvasBottom" width=425 height=375></canvas>
+    <canvas id="canvasTop" width=425 height=375></canvas>
+</div>
+</div>
+	<div class="col-xs-6 col-xs-offset-4">
+		<h5 id="time">&#9786</h5>
+	</div>
+	<div class="col-xs-4 col-xs-offset-8" id="sessionButtons">
+		<button type='button' id='next' class="btn btn-warning">Skip</button>
+		&nbsp<button type='button' id='save' class="btn btn-success">Save & Continue</button>
+		&nbsp<button type='button' id='go' class="btn btn-danger">Draw</button>
+	</div>
+	<div class="col-xs-12">
+		<br><br><br>
+	</div>
