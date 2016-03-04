@@ -10,7 +10,14 @@ $( document ).ready(function () {
 		$(this).css("height", height);
 	});
 
-	ctx = document.getElementById('mCanvasBottom').getContext('2d');
+	var mCurtain = new Image();
+	mCurtain.src = "https://pbs.twimg.com/profile_images/3634387352/ceabbf28c421b26a5802f4ed14e4bd39.jpeg";
+
+	mCanvasBottom = document.getElementById('mCanvasBottom');
+	mCanvasTop = document.getElementById('mCanvasTop');
+	ctx = mCanvasBottom.getContext('2d');
+	ctxHidden = mCanvasTop.getContext('2d');
+
 	ctx.strokeStyle = "#ff00ff";	
 	ctx.lineWidth = 5;
 
@@ -18,17 +25,23 @@ $( document ).ready(function () {
 			e = e.originalEvent;
 			ctx.beginPath();
 			x = e.changedTouches[0].pageX;
-			y = e.changedTouches[0].pageY-325;
+			y = e.changedTouches[0].pageY-300;
 			ctx.moveTo(x, y);
 		};
 		var move = function(e) {
 			e.preventDefault();
 			e = e.originalEvent;
 			x = e.changedTouches[0].pageX;
-			y = e.changedTouches[0].pageY-320;
+			y = e.changedTouches[0].pageY-300;
 			ctx.lineTo(x,y);
 			ctx.stroke();
 		};
+	
+		$('#mobileRefPhoto').on('touchstart', function (e) {
+			ctxHidden.drawImage(mCurtain, 0, 0);
+		})
+
+		
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
