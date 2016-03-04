@@ -6,8 +6,8 @@ $( document ).ready(function () {
 	});
 
 	$('.thick').each(function (e) {
-		height = $(this).data('height');
-		$(this).css("height", height);
+		width = $(this).data('height');
+		$(this).css("width", width);
 	});
 
 	var mCurtain = new Image();
@@ -18,8 +18,8 @@ $( document ).ready(function () {
 	ctx = mCanvasBottom.getContext('2d');
 	ctxHidden = mCanvasTop.getContext('2d');
 
-	ctx.strokeStyle = "#ff00ff";	
-	ctx.lineWidth = 5;
+	ctx.strokeStyle = "000000";	
+	ctx.lineWidth = 2;
 
 		var start = function(e) {
 			e = e.originalEvent;
