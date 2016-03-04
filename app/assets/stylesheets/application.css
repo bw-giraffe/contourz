@@ -15,6 +15,9 @@
  *= require owl.carousel
  *= require owl.theme
  */
+.pure-g { 
+	letter-spacing: normal !important;
+}
 body, body * {
 	font-family: 'Amatic SC', Helvetica !important;
 }
@@ -51,4 +54,5 @@ input:placeholder-shown {
 button {
 	font-size: 22px !important;
 }
+
 

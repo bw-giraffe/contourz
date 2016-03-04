@@ -17,10 +17,8 @@
 //= require owl.carousel
 //= require moment
 
-
 $( document ).ready(function () {
 	console.log("application!");
-
 	var artistImgs = $('#artistslideshow');
 	var gallImgs = $('#slides');
 
@@ -99,7 +97,12 @@ $( document ).ready(function () {
 	    ctxMouse = canvasTop.getContext('2d');
 
 	curtain.onload = setup;
-	curtain.src = "http://i63.tinypic.com/zjxo5g.png";
+
+	function setup() {
+	    ctxMouse.drawImage(this, 0, 0);
+	}
+	// // huh?
+	// curtain.src = "http://i63.tinypic.com/zjxo5g.png";
 
 	ctx.lineWidth = 3;
 	ctx.lineJoin = 'round';
@@ -134,9 +137,6 @@ $( document ).ready(function () {
 		ctx.lineWidth = 2;
 	});
 
-	function setup() {
-	    ctxMouse.drawImage(this, 0, 0);
-	}
 
 	var px, py, isDown = false;
 

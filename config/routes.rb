@@ -39,4 +39,6 @@ Rails.application.routes.draw do
 
   get '/galleries/:id/renditions', to: 'galleries#renditions', as: "renditions"
 
+  get '/mobiletest', to: 'drawing#test', as: "mobile"
+
 end

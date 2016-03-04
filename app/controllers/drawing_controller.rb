@@ -1,5 +1,7 @@
 class DrawingController < ApplicationController
   require 'base64'
+  require "browser"
+  browser = Browser.new("Some User Agent", accept_language: "en-us")
   before_action only: [:show, :destroy] do
     drawing = Drawing.find_by_id(params[:id])
     if(!authorized?(drawing.artist_id))
@@ -48,6 +50,10 @@ class DrawingController < ApplicationController
     @drawing.destroy
     flash[:notice] = "Successfully removed art"
     redirect_to artwork_path(current_artist.id)
+  end
+
+  def test
+    render :test
   end
 
 end
