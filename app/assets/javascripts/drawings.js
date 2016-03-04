@@ -45,16 +45,18 @@ $( document ).ready(function () {
 		$('#drawButtons').hide();
 		
 		var CURRENT_INTERVAL = 0;
+		var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
 		
 		var countdown = {
 
 			getCurrent: function() {
-				var randomInterval = Math.random(10, 80);
+				
 				var twoMins = moment().add(randomInterval, 'seconds');
    				return twoMins._d
 			},
 
 			getRemaining: function(endtime) {
+				console.log("rando", randomInterval);
 				var t = Date.parse(endtime) - Date.parse(new Date());
 				var seconds = Math.floor( (t/1000) % 60);
 				var minutes = Math.floor( (t/1000/60) % 60);
@@ -67,9 +69,9 @@ $( document ).ready(function () {
 
 			start: function(id, endtime) {
 				function updateCountdown(){
-					var countdown = document.getElementById(id);
-					var t = getTimeRemaining(endtime);
-					countdown.append('minutes: ' + t.minutes + ' ' + '  seconds: ' + t.seconds);
+					var t = countdown.getRemaining(endtime);
+					console.log("totes", t);
+					$('#countdown').html("minutes:  " + t.minutes + "  seconds: " + t.seconds);
 					if(t.total<=0) {
 						clearInterval(timeinterval);
 					}
@@ -83,10 +85,10 @@ $( document ).ready(function () {
 				clearInterval( CURRENT_INTERVAL );
 			}
 
-		}
+		};
 
-		var newCountdown = new Countdown();
-    	CURRENT_INTERVAL = newCountdown.start('countdown', newCountdown.getCurrent());
+		var now = countdown.getCurrent();
+    	CURRENT_INTERVAL = countdown.start('countdown', now);
 
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
