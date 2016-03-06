@@ -1,15 +1,21 @@
 $(document).ready(function() {
 
 	console.log("Draw page sanity check working!");
-	$('.circle').each(function (e) {
-		circFill = $(this).data('fill');
-		$(this).css("background", circFill);
-	});
+	
+	var ui = {
+		colorOptions: function() {
+			$('.circle').each(function (e) {
+			circFill = $(this).data('fill');
+			$(this).css("background", circFill);
+			});
 
-	$('.thick').each(function (e) {
-		width = $(this).data('height');
-		$(this).css("width", width);
-	});
+			$('.thick').each(function (e) {
+			width = $(this).data('height');
+			$(this).css("width", width);
+			});
+
+		}
+	};
 
 	var mCurtain = new Image();
 	mCurtain.src = "https://pbs.twimg.com/profile_images/3634387352/ceabbf28c421b26a5802f4ed14e4bd39.jpeg";
@@ -41,9 +47,6 @@ $(document).ready(function() {
 		$('#mobileRefPhoto').on('touchstart', function (e) {
 			ctxHidden.drawImage(mCurtain, 0, 0);
 		});
-
-		$('#saveButtons').hide();
-		$('#drawButtons').hide();
 		
 		var CURRENT_INTERVAL = 0;
 		var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
@@ -81,16 +84,55 @@ $(document).ready(function() {
 				var timeinterval = setInterval(updateCountdown, 1000);
 				return timeinterval;
 			},
-
 			clear: function() {
 				clearInterval( CURRENT_INTERVAL );
 			}
-
 		};
 
-		var now = countdown.getCurrent();
-    	CURRENT_INTERVAL = countdown.start('countdown', now);
+		
 
+    	var drawSession = {
+
+    		await: function() {
+    			$('#colors').hide();
+    			$('#strokes').hide();
+    			$('#saveButtons').hide();
+				$('#drawButtons').show();
+				$('#draw').on('touchstart', function (event) {
+					drawSession.begin();
+				});
+    		}, 
+
+    		begin: function() {
+				//hide draw buttons
+				$('#drawButtons').hide();
+				//show colors and strokes
+				$('#colors').show();
+				$('#strokes').show();
+				//change ui
+				ui.colorOptions();
+				//draw curtain
+				ctxHidden.drawImage(mCurtain, 0, 0);
+				//timer starts 
+				var now = countdown.getCurrent();
+				CURRENT_INTERVAL = countdown.start('countdown', now);
+
+    		},
+
+    		end: function() {
+
+    		},
+
+    		skip: function() {
+
+    		},
+
+    		save: function() {
+
+    		}
+    	} 
+
+    	drawSession.await();
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
