@@ -1,4 +1,5 @@
-$( document ).ready(function () {
+$(document).ready(function() {
+
 	console.log("Draw page sanity check working!");
 	$('.circle').each(function (e) {
 		circFill = $(this).data('fill');
@@ -96,11 +97,15 @@ $( document ).ready(function () {
 
 		$('#colors').bind('touchstart', function (e) {
     		color = $(e.target).data('fill');
+    		$(e.target).fadeOut(200);
+    		$(e.target).fadeIn(200);
     		ctx.strokeStyle = color;
 		});
 
 		$('.thick').bind('touchstart', function (e) {
 			stroke = $(e.target).data('stroke');
+			$(e.target).fadeOut(200);
+    		$(e.target).fadeIn(200);
 			ctx.lineWidth = stroke;
 		});
 		
