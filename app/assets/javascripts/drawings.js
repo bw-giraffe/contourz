@@ -156,12 +156,35 @@ $(document).ready(function() {
     		},
 
     		save: function() {
-
+    			console.log("YOU ENTERED SAAVE");
+    			$('#saveDrawing').on('touchstart', function (e) {
+    				var dataURL = mCanvasBottom.toDataURL();
+					var photoId = $('#mobileRefPhoto').attr('data-photo');
+					document.getElementById('mCanvasBottom').src = dataURL;
+					console.log(dataURL);
+					$.ajax({
+			  			type: "POST",
+			  			url: "/drawing/convert",
+			  			dataType: "json",
+						data: {
+							data_uri: dataURL,
+							photo_id: photoId
+						},
+						success: function (res) {
+							console.log("RES", res);
+							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
+							ctx.clearRect(0, 0, 320, 280);
+							$('#saveButtons').hide();
+							$('#drawButtons').show();
+						}
+					});
+    			});
     		}
     	} 
 
     	drawSession.await();
     	drawSession.skip();
+    	drawSession.save();
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
