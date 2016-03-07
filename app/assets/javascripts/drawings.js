@@ -18,7 +18,7 @@ $(document).ready(function() {
 	};
 
 	var mCurtain = new Image();
-	mCurtain.src = "https://pbs.twimg.com/profile_images/3634387352/ceabbf28c421b26a5802f4ed14e4bd39.jpeg";
+	mCurtain.src = "http://i68.tinypic.com/jaewd4.png";
 
 	mCanvasBottom = document.getElementById('mCanvasBottom');
 	mCanvasTop = document.getElementById('mCanvasTop');
@@ -28,26 +28,30 @@ $(document).ready(function() {
 	ctx.strokeStyle = "000000";	
 	ctx.lineWidth = 2;
 
+	canvasToggle = false; 
+
 		var start = function(e) {
-			e = e.originalEvent;
-			ctx.beginPath();
-			x = e.changedTouches[0].pageX;
-			y = e.changedTouches[0].pageY-300;
-			ctx.moveTo(x, y);
+				e = e.originalEvent;
+				ctx.beginPath();
+				x = e.changedTouches[0].pageX;
+				y = e.changedTouches[0].pageY-300;
+				ctx.moveTo(x, y);
 		};
 		var move = function(e) {
-			e.preventDefault();
-			e = e.originalEvent;
-			x = e.changedTouches[0].pageX;
-			y = e.changedTouches[0].pageY-300;
-			ctx.lineTo(x,y);
-			ctx.stroke();
+			if(canvasToggle) {
+				e.preventDefault();
+				e = e.originalEvent;
+				x = e.changedTouches[0].pageX;
+				y = e.changedTouches[0].pageY-300;
+				ctx.lineTo(x,y);
+				ctx.stroke();
+			}
 		};
-	
-		$('#mobileRefPhoto').on('touchstart', function (e) {
-			ctxHidden.drawImage(mCurtain, 0, 0);
-		});
-		
+
+		var disable = function (e) {
+
+		};
+
 		var CURRENT_INTERVAL = 0;
 		//for testing only
 		var randomInterval = 5;
@@ -93,6 +97,7 @@ $(document).ready(function() {
 				clearInterval(currentint);
 				$('#countdown').hide();
 				drawSession.end();
+				canvasToggle = false;
 			}
 		};
 
@@ -112,6 +117,7 @@ $(document).ready(function() {
     		}, 
 
     		begin: function() {
+    			canvasToggle = true;
     			$('#countdown').show();
 				//hide draw buttons
 				$('#drawButtons').hide();
@@ -208,6 +214,7 @@ $(document).ready(function() {
     	drawSession.save();
     	drawSession.skipSave();
 		//might be mCanvasBottom
+
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
 
