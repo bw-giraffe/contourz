@@ -33,12 +33,13 @@ Rails.application.routes.draw do
 
   get '/artists/:id/drawings', to: 'artists#drawings', as: "artwork"
 
+  get '/drawing/mobile', to: 'drawing#mobile', as: "mobile"
+
   get '/drawing/:id', to: 'drawing#show', as: "art"
 
   delete '/drawing/:id', to: 'drawing#destroy', as: "destroy_art"
 
   get '/galleries/:id/renditions', to: 'galleries#renditions', as: "renditions"
 
-  get '/mobiletest', to: 'drawing#test', as: "mobile"
 
 end

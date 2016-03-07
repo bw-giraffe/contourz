@@ -1,5 +1,5 @@
 <% if browser.device.mobile? %>
-	<%= render "mobile_draw" %>
+	<% controller.redirect_to mobile_path %>
 <% else %>
 	<%= render "standard_draw" %>
 <% end %>
