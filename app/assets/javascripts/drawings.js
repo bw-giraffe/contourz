@@ -138,6 +138,12 @@ $(document).ready(function() {
 
     		},
 
+    		endDraw: function() {
+    			$('#saveButtons').hide();
+				$('#drawButtons').show();
+				ctx.clearRect(0, 0, 320, 280);
+    		},
+
     		skip: function() {
     			$('#skip').on('touchstart', function (e) {
     				$.ajax({
@@ -153,6 +159,24 @@ $(document).ready(function() {
 						}
 					});
     			});
+    		}, 
+
+    		skipSave: function() {
+    			$('#skipSave').on('touchstart', function (e) {
+    				$.ajax({
+						type: "POST",
+						url: "/drawing/convert",
+						dataType: "json",
+						data: {
+							photoOnly: true
+						},
+						success: function (res) {
+							console.log("YOUR RESPONSE FROM THE CONTROLLER", res);
+							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
+							drawSession.endDraw();
+						}
+					});
+    			})
     		},
 
     		save: function() {
@@ -173,9 +197,7 @@ $(document).ready(function() {
 						success: function (res) {
 							console.log("RES", res);
 							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
-							ctx.clearRect(0, 0, 320, 280);
-							$('#saveButtons').hide();
-							$('#drawButtons').show();
+							drawSession.endDraw();
 						}
 					});
     			});
@@ -185,6 +207,7 @@ $(document).ready(function() {
     	drawSession.await();
     	drawSession.skip();
     	drawSession.save();
+    	drawSession.skipSave();
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
