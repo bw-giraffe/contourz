@@ -49,7 +49,9 @@ $(document).ready(function() {
 		});
 		
 		var CURRENT_INTERVAL = 0;
-		var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
+		//for testing only
+		var randomInterval = 5;
+		// var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
 		
 		var countdown = {
 
@@ -77,15 +79,19 @@ $(document).ready(function() {
 					console.log("totes", t);
 					$('#countdown').html("minutes:  " + t.minutes + "  seconds: " + t.seconds);
 					if(t.total<=0) {
-						clearInterval(timeinterval);
+						// clearInterval(timeinterval);
+						countdown.clear(timeinterval);
 					}
 				}
 				updateCountdown();
 				var timeinterval = setInterval(updateCountdown, 1000);
 				return timeinterval;
 			},
-			clear: function() {
-				clearInterval( CURRENT_INTERVAL );
+
+			clear: function(currentint) {
+				console.log("You executed the clear function");
+				clearInterval(currentint);
+				drawSession.end();
 			}
 		};
 
@@ -120,11 +126,33 @@ $(document).ready(function() {
     		},
 
     		end: function() {
+    			//hide colors
+    			$('#colors').hide();
+    			//hide strokes
+    			$('#strokes').hide();
+    			//show save
+
+    			//hide curtain
+    			ctxHidden.clearRect(0, 0, 320, 280);
+    			$('#saveButtons').fadeIn(200);
 
     		},
 
     		skip: function() {
-
+    			$('#skip').on('touchstart', function (e) {
+    				$.ajax({
+						type: "POST",
+						url: "/drawing/convert",
+						dataType: "json",
+						data: {
+							photoOnly: true
+						},
+						success: function (res) {
+							console.log("YOUR RESPONSE FROM THE CONTROLLER", res);
+							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
+						}
+					});
+    			});
     		},
 
     		save: function() {
@@ -133,6 +161,7 @@ $(document).ready(function() {
     	} 
 
     	drawSession.await();
+    	drawSession.skip();
 		//might be mCanvasBottom
 		$(this).on("touchstart", start);
 		$(this).on("touchmove", move);
@@ -150,5 +179,10 @@ $(document).ready(function() {
     		$(e.target).fadeIn(200);
 			ctx.lineWidth = stroke;
 		});
+
+		function replacement(url, photo) {
+			new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "mobileRefPhoto" + "'" + "class='"+"pure-img'" + "/>";
+			return new_img;
+		}
 		
 });

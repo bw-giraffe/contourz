@@ -24,7 +24,15 @@ img#mobileRefPhoto{
 }
 .mOptions {
 	margin-left: auto;
-	margin-right: auto;	
+	margin-right: auto;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+#saveButtons{
+	padding-left: 120px;
+}
+#drawButtons{
+	padding-left: 120px
 }
 .circle{
 	border-radius: 50%;
@@ -81,7 +89,7 @@ img#mobileRefPhoto{
 <!-- http://i68.tinypic.com/jaewd4.png" -->
 <div class="mDraw pure-g">
 	<div class="pure-u-24-24" id="countdown">
-	minutes:   se	conds:  
+	minutes:   seconds:  
 	</div>
 </div>
 <div class="mDraw pure-g">
@@ -95,9 +103,9 @@ img#mobileRefPhoto{
 			<button type='button' id='skip' class="btn btn-warning">Skip</button>&nbsp
 			<button type='button' id='draw' class="btn btn-danger">Draw</button>
 		</div>
-		<div id = "saveButtons" class="l-box">
+		<div id = "saveButtons">
 			<button type='button' id='next' class="btn btn-warning">Next</button>&nbsp
-			&nbsp<button type='button' id='save' class="btn btn-success">Save</button>
+			<button type='button' id='saveDrawing' class="btn btn-success">Save</button>
 		</div>
 	<!-- 	</div> -->
 	<div id="colors" class="pure-1-2">
