@@ -91,6 +91,7 @@ $(document).ready(function() {
 			clear: function(currentint) {
 				console.log("You executed the clear function");
 				clearInterval(currentint);
+				$('#countdown').hide();
 				drawSession.end();
 			}
 		};
@@ -100,6 +101,7 @@ $(document).ready(function() {
     	var drawSession = {
 
     		await: function() {
+    			$('#countdown').hide();
     			$('#colors').hide();
     			$('#strokes').hide();
     			$('#saveButtons').hide();
@@ -110,6 +112,7 @@ $(document).ready(function() {
     		}, 
 
     		begin: function() {
+    			$('#countdown').show();
 				//hide draw buttons
 				$('#drawButtons').hide();
 				//show colors and strokes
@@ -126,13 +129,9 @@ $(document).ready(function() {
     		},
 
     		end: function() {
-    			//hide colors
+    			$('#countdown').hide();
     			$('#colors').hide();
-    			//hide strokes
     			$('#strokes').hide();
-    			//show save
-
-    			//hide curtain
     			ctxHidden.clearRect(0, 0, 320, 280);
     			$('#saveButtons').fadeIn(200);
 
