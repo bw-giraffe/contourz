@@ -11,12 +11,11 @@ $('.drawing.new').ready(function() {
 			width = $(this).data('height');
 			$(this).css("width", width);
 			});
-
 		}
 	};
 
 	var mCurtain = new Image();
-	mCurtain.src = "http://i68.tinypic.com/jaewd4.png";
+	mCurtain.src = "http://i64.tinypic.com/j5f507.png";
 
 	canvasBottom = document.getElementById('canvasBottom');
 	canvasTop = document.getElementById('canvasTop');
@@ -67,7 +66,7 @@ $('.drawing.new').ready(function() {
 
 	var CURRENT_INTERVAL = 0;
 		//for testing only
-		var randomInterval = 5;
+		var randomInterval = 40;
 		// var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
 		
 		var countdown = {
@@ -149,7 +148,7 @@ $('.drawing.new').ready(function() {
     			$('#countdown').hide();
     			$('#colors').hide();
     			$('#strokes').hide();
-    			ctxHidden.clearRect(0, 0, 320, 280);
+    			ctxHidden.clearRect(0, 0, 500, 340);
     			$('#saveButtons').fadeIn(200);
 
     		},
@@ -157,7 +156,7 @@ $('.drawing.new').ready(function() {
     		endDraw: function() {
     			$('#saveButtons').hide();
 				$('#drawButtons').show();
-				ctx.clearRect(0, 0, 320, 280);
+				ctx.clearRect(0, 0, 500, 340);
     		},
 
     		skip: function() {
@@ -171,7 +170,7 @@ $('.drawing.new').ready(function() {
 						},
 						success: function (res) {
 							console.log("YOUR RESPONSE FROM THE CONTROLLER", res);
-							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
+							$('#refPhoto').replaceWith(replacement(res.url, res.photo));
 						}
 					});
     			});
@@ -188,7 +187,7 @@ $('.drawing.new').ready(function() {
 						},
 						success: function (res) {
 							console.log("YOUR RESPONSE FROM THE CONTROLLER", res);
-							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
+							$('#refPhoto').replaceWith(replacement(res.url, res.photo));
 							drawSession.endDraw();
 						}
 					});
@@ -198,7 +197,7 @@ $('.drawing.new').ready(function() {
     		save: function() {
     			console.log("YOU ENTERED SAAVE");
     			$('#saveDrawing').on('click', function (e) {
-    				var dataURL = mCanvasBottom.toDataURL();
+    				var dataURL = canvasBottom.toDataURL();
 					var photoId = $('#refPhoto').attr('data-photo');
 					document.getElementById('canvasBottom').src = dataURL;
 					console.log(dataURL);
@@ -224,10 +223,6 @@ $('.drawing.new').ready(function() {
     	drawSession.skip();
     	drawSession.save();
     	drawSession.skipSave();
-		//might be mCanvasBottom
-
-		$(this).on("click", start);
-
 
 		$('#colors').bind('click', function (e) {
     		color = $(e.target).data('fill');
@@ -245,7 +240,7 @@ $('.drawing.new').ready(function() {
 
 
 	function replacement(url, photo) {
-		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "refPhoto" + "'" + "/>";
+		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "refPhoto" + "'" + "class='"+ "pure-img'" + "/>";
 		return new_img;
 	}
 

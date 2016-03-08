@@ -3,13 +3,15 @@
 	display: block;
 	padding: 0;
 	margin: auto;
-	width: 320px;
+	width: 500px;
+
 	}
 #canvases > canvas {
     position: absolute;
-    cursor:crosshair;
+    cursor: pointer;
 }
-.photo{
+
+.photo {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -21,6 +23,13 @@
 img#refPhoto{
 	margin-left: auto;
 	margin-right: auto;
+	max-width: 300px;
+	max-height: 280px;
+}
+#colors{
+	margin-top: 4px;
+	margin-left: 320px;
+	margin-bottom: 4px;
 }
 .options {
 	margin-left: auto;
@@ -28,11 +37,11 @@ img#refPhoto{
 	margin-bottom: 4px;
 	margin-top: 4px;
 }
-#saveButtons{
-	padding-left: 120px;
+#saveButtons {
+	margin: 0 auto;
 }
-#drawButtons{
-	padding-left: 120px
+#drawButtons {
+	margin: 0 auto;
 }
 .circle{
 	border-radius: 50%;
@@ -54,13 +63,7 @@ img#refPhoto{
 	padding: 5px;	
 }
 .pure-g{
-	padding-left: 12%;
-	padding-right: 12%;
-}
-#colors{
-	margin-top: 2px;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 }
 #strokes{
 	margin-top: 5px;
@@ -81,6 +84,7 @@ img#refPhoto{
 	opacity: .75;
 	color: white;
 	font-family: helvetica !important;
+	font-size: 16px !important;
 	text-align: center;
 	margin-bottom: 5px;
 }
@@ -103,11 +107,10 @@ img#refPhoto{
 			<button type='button' id='skip' class="btn btn-warning">Skip</button>&nbsp
 			<button type='button' id='draw' class="btn btn-danger">Draw</button>
 		</div>
-		<div id = "saveButtons">
+		<div id = "saveButtons" class="l-box">
 			<button type='button' id="skipSave" class="btn btn-warning">Next</button>&nbsp
 			<button type='button' id='saveDrawing' class="btn btn-success">Save</button>
 		</div>
-	<!-- 	</div> -->
 	<div id="colors" class="pure-1-2">
 		<div class="circle pure-u-1-5" data-fill="#2F2F32">
 		</div>
@@ -130,8 +133,9 @@ img#refPhoto{
 	</div>
 </div>
 
+
 	<div id="canvases">
-		<canvas id="canvasBottom" width=320 height=280></canvas>
-		<canvas id="canvasTop" width=320 height=280></canvas>
+		<canvas id="canvasBottom" width=500 height=340></canvas>
+		<canvas id="canvasTop" width=500 height=340></canvas>
 
 	</div>
