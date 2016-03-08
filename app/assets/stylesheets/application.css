@@ -54,5 +54,12 @@ input:placeholder-shown {
 button {
 	font-size: 22px !important;
 }
+#explainer{
+	font-weight: 700;
+	background: white;
+	border-style: dashed;
+	padding: 15px;
+	letter-spacing: 1px;
+}
 
 

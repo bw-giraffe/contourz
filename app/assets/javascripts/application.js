@@ -19,22 +19,5 @@
 //= require moment
 
 $( document ).ready(function () {
-	console.log("application!");
-	var artistImgs = $('#artistslideshow');
-	var gallImgs = $('#slides');
-
-	function initCarousel(elem) {
-		elem.owlCarousel({
-		navigation : true, // Show next and prev button
-	  	itemsDesktop : [1199,3],
-	  	itemsDesktopSmall : [979,3]
-		});
-	}
-
-	if(artistImgs.length) {
-		initCarousel(artistImgs);
-	} else if(gallImgs.length) {
-		initCarousel(gallImgs);
-	}
-
+	console.log("READY");
 });

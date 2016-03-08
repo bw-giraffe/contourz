@@ -66,7 +66,7 @@ $('.drawing.new').ready(function() {
 
 	var CURRENT_INTERVAL = 0;
 		//for testing only
-		var randomInterval = 40;
+		var randomInterval = 4;
 		// var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
 		
 		var countdown = {

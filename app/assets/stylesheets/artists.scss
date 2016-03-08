@@ -2,9 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.owl-carousel{
-	border-style:dashed;
-	background: white;
+
+#artistslideshow{
+	margin: 10px;
+	border-radius: 10px;
+	background: black;
+	padding: 15px;
 }
-
-
+img.owlImgs {
+	max-width: 200px;
+}
+#modalPic {
+  max-width: 100%;
+  max-height: 100%;
+}
+.owl-item{
+  background: white;
+  padding: 30px 0px;
+  display: block;
+  margin: 5px;
+  color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 25px;
+  text-align: center;
+}
