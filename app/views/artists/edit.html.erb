@@ -1,15 +1,19 @@
-<%= form_for @artist, url: {action: "update"} do |f| %>
-	<%= f.label :username %>
-	<br>
-	<%= f.text_field :username, :placeholder => @artist.username %>
-	<br><br>
-	<%= f.label :location %>
-	<br>
-	<%= f.text_field :location, :placeholder => @artist.location %>
-	<br><br>
-	<%= f.label :email %>
-	<br>
-	<%= f.text_field :email, :placeholder => @artist.location %>
-	<br><br>
-<%= f.submit "Update" %>
-<% end %>
+<div class="container">
+	<div class="col-xl-1 col-offset-centered">
+	<%= form_for @artist, url: {action: "update"} do |f| %>
+		<%= f.label :username %>
+		<br>
+		<%= f.text_field :username, :placeholder => @artist.username %>
+		<br><br>
+		<%= f.label :location %>
+		<br>
+		<%= f.text_field :location, :placeholder => @artist.location %>
+		<br><br>
+		<%= f.label :email %>
+		<br>
+		<%= f.text_field :email, :placeholder => @artist.location %>
+		<br><br>
+	<%= f.submit "Update" %>
+	<% end %>
+	</div>
+</div>

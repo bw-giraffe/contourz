@@ -1,24 +1,26 @@
-<div id = "basicInfo">
-	<h1>
-		<%= @artist.username %>
-	</h1>
-	<h2>
-		joined:
-		<%= @artist.created_at %>
-	</h2>
-	<h3>
-		location:
-		<%= @artist.location %>
-	</h3>
-</div>
-<div id = "options">
-	<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
-</div>
+<div class="container">
+	<div class="col-xl-1 col-offset-centered">
+		<div id = "basicInfo">
+			<h1>
+				<%= @artist.username %>
+			</h1>
+			<h2>
+				joined:
+				<%= @artist.created_at %>
+			</h2>
+			<h3>
+				location:
+				<%= @artist.location %>
+			</h3>
+		</div>
+		<div id = "options">
+			<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
+		</div>
 
-<div id "allDrawings">
-	<%= button_to "All Drawings", artwork_path, :method => :get %>
-</div>
-
+		<div id "allDrawings">
+			<%= button_to "All Drawings", artwork_path, :method => :get %>
+		</div>
+	</div>
 <div class="owl-carousel" id="artistslideshow">
 	<% @drawings.each do |d| %>
   		<div><%= image_tag d.image.url(:medium), class: "owlImgs" %></div>

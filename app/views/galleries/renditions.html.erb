@@ -1,10 +1,9 @@
-<h1>Welcome to the Renditions Page</h1>
+
 <div class="container">
-	<div class ="row">
-		<div class="col-md-offset-2 col-md-4">
+    <h1>Welcome to the Renditions Page</h1>
+		<div class="col-md-offset-2 col-md-4" id="original">
 			<%= image_tag @original.url %>
 		</div>
-	</div>
 </div>
 <div class="owl-carousel" id="slides">
 	<% @renditions.each do |d| %>

@@ -1,8 +1,13 @@
 // Place all the styles related to the galleries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#gallList a{
+  color: red !important;
+  font-weight: 700;
+  padding: 5px;
+}
 img#reference{
-  max-width: 300px;
+  max-width: 250px;
 }
 #slides{
 	margin: 10px;

@@ -56,10 +56,10 @@ button {
 }
 #explainer{
 	font-weight: 700;
-	background: white;
+	background: #C0C5C8;
 	border-style: dashed;
 	padding: 15px;
-	letter-spacing: 1px;
+	letter-spacing: 0.25px;
 }
 
 
