@@ -1,5 +1,7 @@
-$('.drawing.new').ready(function() {
+$('.drawing.mobile').ready(function() {
 
+	console.log("DRAW PAGE JS");
+	
 	var ui = {
 		colorOptions: function() {
 			$('.circle').each(function (e) {
@@ -18,54 +20,35 @@ $('.drawing.new').ready(function() {
 	var mCurtain = new Image();
 	mCurtain.src = "http://i68.tinypic.com/jaewd4.png";
 
-	canvasBottom = document.getElementById('canvasBottom');
-	canvasTop = document.getElementById('canvasTop');
-	ctx = canvasBottom.getContext('2d');
-	ctxHidden = canvasTop.getContext('2d');
+	mCanvasBottom = document.getElementById('mCanvasBottom');
+	mCanvasTop = document.getElementById('mCanvasTop');
+	ctx = mCanvasBottom.getContext('2d');
+	ctxHidden = mCanvasTop.getContext('2d');
 
-	ctx.strokeStyle = "000000";
-	ctx.lineJoin = 'round';
-	ctx.lineCap = 'round';	
+	ctx.strokeStyle = "000000";	
 	ctx.lineWidth = 2;
 
 	canvasToggle = false; 
 
-	var px, py, isDown = false;
+		var start = function(e) {
+				e = e.originalEvent;
+				ctx.beginPath();
+				x = e.changedTouches[0].pageX;
+				y = e.changedTouches[0].pageY-300;
+				ctx.moveTo(x, y);
+		};
+		var move = function(e) {
+			if(canvasToggle) {
+				e.preventDefault();
+				e = e.originalEvent;
+				x = e.changedTouches[0].pageX;
+				y = e.changedTouches[0].pageY-300;
+				ctx.lineTo(x,y);
+				ctx.stroke();
+			}
+		};
 
-	canvasTop.onmousedown = function (e) {
-		if(canvasToggle) {
-		    var pos = getXY(e);
-		    px = pos.x;
-		    py = pos.y;
-		    isDown = true;
-		}
-	}
-
-	canvasTop.onmouseup = function () {
-	    isDown = false;
-	}
-
-	canvasTop.onmousemove = function (e) {
-	    if (isDown) {
-	        var pos = getXY(e);
-	        ctx.beginPath();
-	        ctx.moveTo(px, py);
-	        ctx.lineTo(pos.x, pos.y);
-	        ctx.stroke();
-	        px = pos.x;
-	        py = pos.y;
-	    }
-	}
-
-	function getXY(e) {
-	    var rect = canvasTop.getBoundingClientRect();
-	    return {
-	        x: e.clientX - rect.left,
-	        y: e.clientY - rect.top
-	    };
-	}
-
-	var CURRENT_INTERVAL = 0;
+		var CURRENT_INTERVAL = 0;
 		//for testing only
 		var randomInterval = 5;
 		// var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
@@ -114,7 +97,9 @@ $('.drawing.new').ready(function() {
 			}
 		};
 
-		var drawSession = {
+		
+
+    	var drawSession = {
 
     		await: function() {
     			$('#countdown').hide();
@@ -122,7 +107,7 @@ $('.drawing.new').ready(function() {
     			$('#strokes').hide();
     			$('#saveButtons').hide();
 				$('#drawButtons').show();
-				$('#draw').on('click', function (event) {
+				$('#draw').on('touchstart', function (event) {
 					drawSession.begin();
 				});
     		}, 
@@ -161,7 +146,7 @@ $('.drawing.new').ready(function() {
     		},
 
     		skip: function() {
-    			$('#skip').on('click', function (e) {
+    			$('#skip').on('touchstart', function (e) {
     				$.ajax({
 						type: "POST",
 						url: "/drawing/convert",
@@ -178,7 +163,7 @@ $('.drawing.new').ready(function() {
     		}, 
 
     		skipSave: function() {
-    			$('#skipSave').on('click', function (e) {
+    			$('#skipSave').on('touchstart', function (e) {
     				$.ajax({
 						type: "POST",
 						url: "/drawing/convert",
@@ -197,10 +182,10 @@ $('.drawing.new').ready(function() {
 
     		save: function() {
     			console.log("YOU ENTERED SAAVE");
-    			$('#saveDrawing').on('click', function (e) {
+    			$('#saveDrawing').on('touchstart', function (e) {
     				var dataURL = mCanvasBottom.toDataURL();
-					var photoId = $('#refPhoto').attr('data-photo');
-					document.getElementById('canvasBottom').src = dataURL;
+					var photoId = $('#mobileRefPhoto').attr('data-photo');
+					document.getElementById('mCanvasBottom').src = dataURL;
 					console.log(dataURL);
 					$.ajax({
 			  			type: "POST",
@@ -212,7 +197,7 @@ $('.drawing.new').ready(function() {
 						},
 						success: function (res) {
 							console.log("RES", res);
-							$('#refPhoto').replaceWith(replacement(res.url, res.photo));
+							$('#mobileRefPhoto').replaceWith(replacement(res.url, res.photo));
 							drawSession.endDraw();
 						}
 					});
@@ -226,28 +211,26 @@ $('.drawing.new').ready(function() {
     	drawSession.skipSave();
 		//might be mCanvasBottom
 
-		$(this).on("click", start);
+		$(this).on("touchstart", start);
+		$(this).on("touchmove", move);
 
-
-		$('#colors').bind('click', function (e) {
+		$('#colors').bind('touchstart', function (e) {
     		color = $(e.target).data('fill');
     		$(e.target).fadeOut(200);
     		$(e.target).fadeIn(200);
     		ctx.strokeStyle = color;
 		});
 
-		$('.thick').bind('click', function (e) {
+		$('.thick').bind('touchstart', function (e) {
 			stroke = $(e.target).data('stroke');
 			$(e.target).fadeOut(200);
     		$(e.target).fadeIn(200);
 			ctx.lineWidth = stroke;
 		});
 
-
-	function replacement(url, photo) {
-		new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "refPhoto" + "'" + "/>";
-		return new_img;
-	}
-
+		function replacement(url, photo) {
+			new_img = "<img src='" + url + "'" + " data-photo='" + photo + "'" + " id= '" + "mobileRefPhoto" + "'" + "class='"+"pure-img'" + "/>";
+			return new_img;
+		}
+		
 });
-
