@@ -66,7 +66,12 @@ $('.drawing.new').ready(function() {
 
 	var CURRENT_INTERVAL = 0;
 
-	var randomInterval = Math.floor(Math.random() * ((90-10)+1) + 10);
+	function randomize() {
+			rand = Math.floor(Math.random() * ((90-10)+1) + 10);
+			return rand;
+		}
+
+	var randomInterval = randomize();
 	
 	var countdown = {
 
@@ -149,7 +154,7 @@ $('.drawing.new').ready(function() {
 			$('#strokes').hide();
 			ctxHidden.clearRect(0, 0, 500, 340);
 			$('#saveButtons').fadeIn(200);
-
+			randomInterval = randomize();
 		},
 
 		endDraw: function() {
