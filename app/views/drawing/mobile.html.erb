@@ -1,47 +1,43 @@
 <style>
-#canvases{
+#mobileCanvases{
 	display: block;
 	padding: 0;
 	margin: auto;
-	width: 500px;
-
+	width: 320px;
 	}
-#canvases > canvas {
+#mobileCanvases > canvas {
     position: absolute;
-    cursor: pointer;
+    cursor:crosshair;
 }
-
-.photo {
+#canvasBottom {
+	background: white;
+	border-style: dashed; 
+	border-width: 1px;
+}
+.mPhoto{
 	margin-left: auto;
 	margin-right: auto;
 }
-.draw{
+.mDraw{
 	padding-left: auto;
 	padding-right: auto;
 }
 
-img#refPhoto{
+img#mobileRefPhoto{
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 300px;
-	max-height: 280px;
 }
-#colors{
-	margin-top: 4px;
-	margin-left: 320px;
-	margin-bottom: 4px;
-}
-.options {
+.mOptions {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 4px;
 	margin-top: 4px;
 }
-#saveButtons {
-	margin: 0 auto;
+#saveButtons{
+	padding-left: 120px;
 }
-#drawButtons {
-	margin: 0 auto;
+#drawButtons{
+	padding-left: 120px
 }
 .circle{
 	border-radius: 50%;
@@ -63,7 +59,12 @@ img#refPhoto{
 	padding: 5px;	
 }
 .pure-g{
-	margin: 0 auto;
+	padding-left: 12%;
+	padding-right: 12%;
+}
+#colors{
+	margin-top: 2px;
+	margin-left: 0 auto;
 }
 #strokes{
 	margin-top: 5px;
@@ -84,33 +85,32 @@ img#refPhoto{
 	opacity: .75;
 	color: white;
 	font-family: helvetica !important;
-	font-size: 16px !important;
 	text-align: center;
 	margin-bottom: 5px;
 }
-
 </style>
 <!-- http://i68.tinypic.com/jaewd4.png" -->
-<div class="draw pure-g">
+<div class="mDraw pure-g">
 	<div class="pure-u-24-24" id="countdown">
 	minutes:   seconds:  
 	</div>
 </div>
-<div class="draw pure-g">
-	<div class="photo pure-u-24-24">
-		<%= image_tag @photo.url, "data-photo": @photo.id, class: "pure-img", id: "refPhoto"%>
+<div class="mDraw pure-g">
+	<div class="mPhoto pure-u-24-24">
+		<%= image_tag @photo.url, "data-photo": @photo.id, class: "pure-img", id: "mobileRefPhoto"%>
 	</div>
 </div>
-<div class="options pure-g">
+<div class="mOptions pure-g">
 		<!-- <div class="pure-u-1-2"> -->
 		<div id = "drawButtons" class="l-box">
 			<button type='button' id='skip' class="btn btn-warning">Skip</button>&nbsp
 			<button type='button' id='draw' class="btn btn-danger">Draw</button>
 		</div>
-		<div id = "saveButtons" class="l-box">
+		<div id = "saveButtons">
 			<button type='button' id="skipSave" class="btn btn-warning">Next</button>&nbsp
 			<button type='button' id='saveDrawing' class="btn btn-success">Save</button>
 		</div>
+	<!-- 	</div> -->
 	<div id="colors" class="pure-1-2">
 		<div class="circle pure-u-1-5" data-fill="#2F2F32">
 		</div>
@@ -133,9 +133,8 @@ img#refPhoto{
 	</div>
 </div>
 
-
-	<div id="canvases">
-		<canvas id="canvasBottom" width=500 height=340></canvas>
-		<canvas id="canvasTop" width=500 height=340></canvas>
+	<div id="mobileCanvases">
+		<canvas id="mCanvasBottom" width=320 height=280></canvas>
+		<canvas id="mCanvasTop" width=320 height=280></canvas>
 
 	</div>

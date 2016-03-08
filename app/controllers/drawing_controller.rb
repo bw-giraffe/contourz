@@ -3,7 +3,9 @@ class DrawingController < ApplicationController
   require "browser"
   browser = Browser.new("Some User Agent", accept_language: "en-us")
   before_action only: [:show, :destroy] do
+    p "ENTERED BEFORE ACTION FOR DRAW"
     drawing = Drawing.find_by_id(params[:id])
+    p "DRAWING ID #{drawing}"
     if(!authorized?(drawing.artist_id))
       flash[:notice] = "You do not have access."
       redirect_to artist_path(current_artist.id)
@@ -11,18 +13,16 @@ class DrawingController < ApplicationController
   end
 
   def new
+    p "PARAMS IN NEW #{params}"
     p "YOU HIT THE NEW DRAWING CONTROLLER";
     @photo = Photo.order("RANDOM()").first 
     @drawing = Drawing.new
-    message = ""
-    if(seen?(@photo.id))
-      message = "Practice makes perfect"
-    end
+  
     respond_to do |format|
       format.html
       format.json do
         p "!--RENDERING IN JSON--!"
-        render json: {url: @photo.url, photo: @photo.id, seen: message}
+        render json: {url: @photo.url, photo: @photo.id}
       end
     end
   end
@@ -52,8 +52,11 @@ class DrawingController < ApplicationController
     redirect_to artwork_path(current_artist.id)
   end
 
-  def test
-    render :test
+   def mobile
+    p "YOU ENTERED THE FUCKING MOBILE CONTROLLER FUCK YOU RAILS"
+    @photo = Photo.order("RANDOM()").first 
+    @drawing = Drawing.new
+    render :mobile
   end
 
 end

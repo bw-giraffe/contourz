@@ -1,13 +1,25 @@
-<h1>Welcome to the Renditions Page</h1>
+
 <div class="container">
-	<div class ="row">
-		<div class="col-md-offset-2 col-md-4">
+    <h1>Welcome to the Renditions Page</h1>
+		<div class="col-md-offset-2 col-md-4" id="original">
 			<%= image_tag @original.url %>
 		</div>
-	</div>
 </div>
 <div class="owl-carousel" id="slides">
 	<% @renditions.each do |d| %>
-  		<div><%= image_tag d.image.url(:medium) %></div>
+  		<div><%= image_tag d.image.url(:medium), id: "slideImgs" %></div>
   	<% end %>
+</div>
+
+<div class="modal fade" id="slideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src= "" alt="waiting" id="modalPic">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

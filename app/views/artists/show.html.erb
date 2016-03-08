@@ -1,27 +1,41 @@
-<div id = "basicInfo">
-	<h1>
-		<%= @artist.username %>
-	</h1>
-	<h2>
-		joined:
-		<%= @artist.created_at %>
-	</h2>
-	<h3>
-		location:
-		<%= @artist.location %>
-	</h3>
-</div>
-<div id = "options">
-	<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
-</div>
+<div class="container">
+	<div class="col-xl-1 col-offset-centered">
+		<div id = "basicInfo">
+			<h1>
+				<%= @artist.username %>
+			</h1>
+			<h2>
+				joined:
+				<%= @artist.created_at %>
+			</h2>
+			<h3>
+				location:
+				<%= @artist.location %>
+			</h3>
+		</div>
+		<div id = "options">
+			<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
+		</div>
 
-<div id "allDrawings">
-	<%= button_to "All Drawings", artwork_path, :method => :get %>
-</div>
-
+		<div id "allDrawings">
+			<%= button_to "All Drawings", artwork_path, :method => :get %>
+		</div>
+	</div>
 <div class="owl-carousel" id="artistslideshow">
 	<% @drawings.each do |d| %>
-  		<div><%= image_tag d.image.url(:medium) %></div>
+  		<div><%= image_tag d.image.url(:medium), class: "owlImgs" %></div>
   	<% end %>
 </div>
-	   
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src= "" alt="waiting" id="modalPic">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

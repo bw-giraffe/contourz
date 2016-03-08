@@ -12,7 +12,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -43,6 +44,7 @@
 			<% end %>
 		 </ul>
 	    </div><!-- /.navbar-collapse -->
+	<%= %>
 
 	  </div><!-- /.container-fluid -->
 	</nav>
