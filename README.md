@@ -28,7 +28,8 @@ $( '.artists.show' ).ready(function () {
 ```
 
 
-2) Integrating Amazon Web Services S3 for storing my images
+2) Integrating Amazon Web Services S3 for storing my images.
+
 I nearly panicked when I found out that Heroku's dynos wipe out most of your saved image files (drawings in this case). Luckily there's AWS s3 which stores your images with the help of the Paperclip gem. 
 
 ```
