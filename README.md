@@ -14,3 +14,4 @@ Ruby on Rails, Postgresql, Javascript, jQuery, AJAX, Amazon Web Services S3
 
 4) There are on page style sheets. :-o I faced some challenges trying to keep the stylesheets separated in Rails. 
 
+
