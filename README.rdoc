@@ -1,28 +1,16 @@
-== README
+I started this project wanting to make something fun and engaging. I had taken art classes when I was in college and one of my favorite exercises was blind contour drawings. I had one week to construct the majority of the project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Technologies Used
+Ruby on Rails, Postgresql, Javascript, jQuery, AJAX, Amazon Web Services S3
 
-Things you may want to cover:
+### Known Issues
 
-* Ruby version
+1) After the draw cycle ends, the drawing is still present but the background remains transparent. 
 
-* System dependencies
+2) CSS -- there are quite a few CSS issues throughout the project with regards to spacing. Honestly, this was one of the most challenging parts of the project. It's so hard to center things and get them on the page exactly as you envision them. But it is a satisfying challenge nonetheless, especially when you get it to work. 
+3) Form fields when updating profile information arent in a legible font.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4) There are on page style sheets. :-o I faced some challenges trying to keep the stylesheets separated in Rails. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
