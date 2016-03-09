@@ -19,8 +19,38 @@ Ruby on Rails, Postgresql, Javascript, jQuery, AJAX, Amazon Web Services S3
 ###Triumphs
 
 1) Separating the Javascript files used for each view. There's actually an awesome tutorial on it here 
+http://brandonhilkert.com/blog/page-specific-javascript-in-rails/
 
 ```
-var thing
+$( '.artists.show' ).ready(function () {
+	var artistImgs = $('#artistslideshow');
 
 ```
+
+
+2) Integrating Amazon Web Services S3 for storing my images
+I nearly panicked when I found out that Heroku's dynos wipe out most of your saved image files (drawings in this case). Luckily there's AWS s3 which stores your images with the help of the Paperclip gem. 
+
+```
+config.paperclip_defaults ={
+     :storage => :s3,
+     :s3_credentials => {
+     :bucket =>
+
+```
+
+####3) Getting the html canvas to work on mobile! 
+This took me a long time, but the Chrome Developer Console has a great mobile development tester. It allowed me to test out new "touchstart" and "touchend" events for drawing, whereas the desktop version relies on 'click' and 'onmousemove' actions to detect when someone is drawing. 
+```
+$('#draw').on('touchstart', function (event) {
+					drawSession.begin();
+});
+```
+
+
+###Future Work
+Aside from fixing the known issues I'd love to
+
+1) Add a seeding tool that utilizes the Flickr API to pull new images and photos. This will allow me to curate new subjects for users to draw.
+
+2) Changing the draw page layout to allow users the maximum amount of space to draw an image. 
