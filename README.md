@@ -43,10 +43,9 @@ config.paperclip_defaults ={
 This took me a long time, but the Chrome Developer Console has a great mobile development tester. It allowed me to test out new "touchstart" and "touchend" events for drawing, whereas the desktop version relies on 'click' and 'onmousemove' actions to detect when someone is drawing. 
 ```
 $('#draw').on('touchstart', function (event) {
-					drawSession.begin();
+	drawSession.begin();
 });
 ```
-
 
 ###Future Work
 Aside from fixing the known issues I'd love to
