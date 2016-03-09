@@ -1,9 +1,9 @@
 I started this project wanting to make something fun and engaging. I had taken art classes when I was in college and one of my favorite exercises was blind contour drawings. I had one week to construct the majority of the project.
 
-### H3 Technologies Used
+### Technologies Used ###
 Ruby on Rails, Postgresql, Javascript, jQuery, AJAX, Amazon Web Services S3
 
-### H3 Known Issues
+###  Known Issues ###
 
 1) After the draw cycle ends, the drawing is still present but the background remains transparent. 
 
