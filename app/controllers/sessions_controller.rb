@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
     @artist = Artist.confirm(artist_params)
     if @artist
       login(@artist)
-      flash[:notice] = "Successfully logged in."
-      redirect_to @artist
+      flash[:notice] = "Start drawing!"
+      redirect_to new_drawing_path
     else
       flash[:error] = "Incorrect email or password."
       redirect_to login_path
