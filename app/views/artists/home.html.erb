@@ -1,3 +1,8 @@
+<style>
+#guestbutton{
+	background-color: #9FE3B4;
+}
+</style>
 <div class = "container">
 	<div class="col-xl-1 col-offset-centered">
 	<br>
@@ -10,7 +15,15 @@
 	<br>
 	<div class="col-xl-1 col-offset-centered" id="explainer">
 		<h3>
-		Blind contour drawing is a drawing exercise, where the artist draws the contour of a subject without looking at the paper. In this forum you will be given a random amount of time to perfect your technique. Sign up to begin drawing. Have fun, and good luck!
-		</h3>
+		Blind contour drawing is a drawing exercise, where the artist draws the contour of a subject without looking at the paper. In this forum you will be given a random amount of time to perfect your technique. Sign up to begin drawing or 
+	<%= form_for @artist, url: "/sessions", method: "post" do |f| %>
+    <%= f.hidden_field :email, value: "guestly@guestly.com"%>
+    <%= f.hidden_field :password, value: "guestly" %>
+  	<%= f.submit "Login as Guest", id: "guestbutton" %>
+  	<% end %>
+	<br>
+	<br>
+	Have fun, and good luck!
+	</h3>
 	</div>
 </div>

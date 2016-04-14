@@ -63,3 +63,4 @@ food_photo_urls.each do |f|
 end
 
 
+Artist.create({username: "guestly", email: "guestly@guestly.com", password: "guestly", location: "omnipresent"})

@@ -54,6 +54,7 @@ class ArtistsController < ApplicationController
   end
 
   def home
+    @artist = Artist.new
     render :home
   end
 
