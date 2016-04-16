@@ -17,8 +17,8 @@
 		<h3>
 		Blind contour drawing is a drawing exercise, where the artist draws the contour of a subject without looking at the paper. In this forum you will be given a random amount of time to perfect your technique. Sign up to begin drawing or 
 	<%= form_for @artist, url: "/sessions", method: "post" do |f| %>
-    <%= f.hidden_field :email, value: "guestly@guestly.com"%>
-    <%= f.hidden_field :password, value: "guestly" %>
+    <%= f.hidden_field :email, value: "#{ENV['GUEST_EMAIL']}"%>
+    <%= f.hidden_field :password, value: "#{ENV['GUEST_PASSWORD']}" %>
   	<%= f.submit "Login as Guest", id: "guestbutton" %>
   	<% end %>
 	<br>
