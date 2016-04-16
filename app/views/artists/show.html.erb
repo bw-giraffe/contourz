@@ -13,9 +13,11 @@
 				<%= @artist.location %>
 			</h3>
 		</div>
-		<div id = "options">
-			<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
-		</div>
+		<% if !(@artist['email'] == ENV['GUEST_EMAIL']) %>
+			<div id = "options">
+				<%= button_to "Edit Profile", edit_profile_path, :method => :get %>
+			</div>
+		<% end %>
 
 		<div id "allDrawings">
 			<%= button_to "All Drawings", artwork_path, :method => :get %>
